@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import Background from '../../images/background.png'
 import { Link } from "react-router-dom"
 
 export const Section = styled.section`
@@ -21,32 +20,43 @@ export const Ul = styled.ul`
 export const Li = styled.li`
     width: 250px;
     height: 300px;
-    background-image: url(${Background});
+    background-color: #111;
     background-position: center;
     border-radius: 10px;
     -webkit-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
-    `
+`
+
+export const ContainerTitle = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
     
 export const H2 = styled.h2`    
-    color: #fff;
+    color: #ccc;
     text-transform: uppercase;
     font-size: 20px;
 `
 
+export const P = styled.p`
+    color: #ccc;
+    font-weight: bold;
+`
+
 export const Img = styled.img`
     width: 50%;
+    margin: 30px 0;
 `
 
 export const StyledLink = styled(Link)`
-    background-color: rgba(2, 2, 2, 0.8);
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     z-index: 3;
 `
 

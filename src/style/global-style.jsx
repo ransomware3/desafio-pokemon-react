@@ -9,7 +9,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background-color: rgb(15, 1, 1);
+        // background-color: rgb(15, 1, 1);
+        background: #222;
     }
 
     h1,h2,h3,h4,h5,h6,p,span,li,img{
