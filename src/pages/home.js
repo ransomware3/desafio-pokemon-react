@@ -15,31 +15,14 @@ import {
 } from '../components/pokemon-card/styled-home'
 
 const Home = () => {
-
-    // const [pokemons, setPokemons] = useState([])
     const [renderPokemons, setRenderPokemons] = useState([])
     const [SearchedPokemons, setSearchedPokemons] = useState([])
-    const [number, setNumber] = useState(25)
+    const [number, setNumber] = useState(100)
 
     useEffect(() => {
         getPokemons()
         // eslint-disable-next-line
     }, [])
-
-    // const getAllPokemons = async () => {
-    //     let endpoints = []
-
-    //     for (let i = 1; i <= 50; i++) {
-    //         endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-    //     }
-
-    //     axios.all(endpoints.map((item) => axios.get(item))).then((res) => {
-    //         const data = res.map((item) => item.data)
-    //         setPokemons(data)
-    //     })
-    // }
-    // getAllPokemons()
-
 
     const getPokemons = () => {
 
@@ -58,7 +41,7 @@ const Home = () => {
     }
 
     const showMore = () => {
-        const morePokemons = number + 25
+        const morePokemons = number + 100
         let endpoints = []
 
         for (let i = number + 1; i <= morePokemons; i++) {
@@ -85,9 +68,27 @@ const Home = () => {
         }
     }
 
+    const typeFilter = (search) => {
+        if (search === "") {
+            setSearchedPokemons([])
+            return
+        } else {
+            const filteredTypes = renderPokemons.filter((item) => {
+                const pokeTypes = item.types
+
+                if(item.types[1]){
+                    return pokeTypes[0].type.name.includes(search) || pokeTypes[1].type.name.includes(search)
+                }else{
+                    return pokeTypes[0].type.name.includes(search)
+                }
+            })
+            setSearchedPokemons(filteredTypes)
+        }
+    }
+
     return (
         <>
-            <Header filterPokemons={filterPokemons} />
+            <Header typeFilter={typeFilter} filterPokemons={filterPokemons} />
             <Section>
                 {SearchedPokemons.length > 0 && <UlSearch>
                         {SearchedPokemons.map((item, index) => {

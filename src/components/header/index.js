@@ -1,4 +1,5 @@
 import Logo from '../../images/pokemon-logo.png'
+import { useEffect, useState } from 'react'
 import { BiSearch } from 'react-icons/bi'
 import {
     HeaderTag,
@@ -18,7 +19,15 @@ import {
     SAnchor
 } from './styled'
 
-const Header = ({ filterPokemons }) => {
+const Header = ({ filterPokemons, typeFilter }) => {
+
+    const [selectedValue, setSelectedValue] = useState('')
+
+    useEffect(() => {
+        typeFilter(selectedValue)
+        // eslint-disable-next-line
+    }, [selectedValue])
+
     return (
         <>
             <HeaderTag>
@@ -36,8 +45,11 @@ const Header = ({ filterPokemons }) => {
                     </HeaderLimiter>
                 </HeaderOne>
                 <SubHeader>
-                    <Select>
-                        <Option>Type Filter</Option>
+                    <Select value={selectedValue} onChange={({target}) => {
+                            setSelectedValue(target.value)
+                            typeFilter(selectedValue)
+                        }}>
+                        <Option value=''>type-filter</Option>
                         <Option value='normal'>Normal</Option>
                         <Option value='fighting'>Fighting</Option>
                         <Option value='flying'>Flying</Option>
