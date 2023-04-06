@@ -10,19 +10,20 @@ import {
     StyledLink,
     BtnCharge,
     ContainerTitle,
-    P
+    P,
+    UlSearch
 } from '../components/pokemon-card/styled-home'
 
 const Home = () => {
 
     const [pokemons, setPokemons] = useState([])
+    const [SearchedPokemons, setSearchedPokemons] = useState([])
     const [number, setNumber] = useState(25)
 
     useEffect(() => {
         getPokemons()
         // eslint-disable-next-line
     }, [])
-
 
     const getPokemons = () => {
 
@@ -33,8 +34,11 @@ const Home = () => {
         }
 
         axios.all(endpoints.map((item) => axios.get(item)))
-            .then((res) => setPokemons(res))
-            .catch((error) => console.log(error))
+            .then((res) => {
+                const data = res.map((item) => item.data)
+                setPokemons(data)
+            })
+            .catch((error) => console.log('erro getPokemons' + error))
     }
 
     const showMore = () => {
@@ -46,42 +50,67 @@ const Home = () => {
         }
 
         axios.all(endpoints.map((item) => axios.get(item)))
-            .then((res) => setPokemons([...pokemons, ...res]))
-            .catch((error) => console.log(error))
+            .then((res) => {
+                const data = res.map((item) => item.data)
+                setPokemons([...pokemons, ...data])
+            })
+            .catch((error) => console.log('erro showMore' + error))
 
         setNumber(morePokemons)
     }
 
     const filterPokemons = (search) => {
-        let filteredPokemons = []
-
         if (search === "") {
-            getPokemons()
+            setSearchedPokemons([])
+            return
+        } else {
+            const filteredPokemons = pokemons.filter((item) => item.name.includes(search))
+            console.log(search)
+            setSearchedPokemons(filteredPokemons)
         }
-
-        for (let i in pokemons) {
-            if (pokemons[i].data.name.includes(search) || pokemons[i].data.id.toString().includes(search)) {
-                filteredPokemons.push(pokemons[i])
-                console.log(pokemons[i].data.id)
-            }
-        }
-
-        setPokemons(filteredPokemons)
     }
 
     return (
         <>
-            <Header filterPokemons={filterPokemons}/>
+            <Header filterPokemons={filterPokemons} />
             <Section>
+                {SearchedPokemons.length > 0 && <UlSearch>
+                        {SearchedPokemons.map((item, index) => {
+                            const pokemonTypes = item.types
+                        
+                            const getTypes = () => {
+                                if (pokemonTypes[1]) {
+                                    return pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name
+                                } else {
+                                    return pokemonTypes[0].type.name
+                                }
+                            }
+                        
+                            return (
+                                <Li key={index}>
+                                    <StyledLink>
+                                        <P>{getTypes()}</P>
+                                        <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
+                                        <ContainerTitle>
+                                            <H2>{item.id + '.'}</H2>
+                                            <H2>&nbsp;{item.name}</H2>
+                                        </ContainerTitle>
+                                    </StyledLink>
+                                </Li>
+                                )
+                        })}
+                    </UlSearch>
+                }
+
                 <Ul>
                     {pokemons.map((item, index) => {
 
-                        const pokemonTypes = item.data.types
+                        const pokemonTypes = item.types
 
                         const getTypes = () => {
-                            if(pokemonTypes[1]){
+                            if (pokemonTypes[1]) {
                                 return pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name
-                            }else{
+                            } else {
                                 return pokemonTypes[0].type.name
                             }
                         }
@@ -90,10 +119,10 @@ const Home = () => {
                             <Li key={index}>
                                 <StyledLink>
                                     <P>{getTypes()}</P>
-                                    <Img alt="imagem do pokemon" src={item.data.sprites.front_default}></Img>
+                                    <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
                                     <ContainerTitle>
-                                        <H2>{item.data.id + '.'}</H2>
-                                        <H2>&nbsp;{item.data.name}</H2>
+                                        <H2>{item.id + '.'}</H2>
+                                        <H2>&nbsp;{item.name}</H2>
                                     </ContainerTitle>
                                 </StyledLink>
                             </Li>

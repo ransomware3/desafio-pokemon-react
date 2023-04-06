@@ -18,7 +18,7 @@ import {
     SAnchor
 } from './styled'
 
-const Header = ({filterPokemons}) => {
+const Header = ({ filterPokemons }) => {
     return (
         <>
             <HeaderTag>
@@ -58,7 +58,7 @@ const Header = ({filterPokemons}) => {
                         <Option value='fairy'>Fairy</Option>
                     </Select>
                     <ContainerSearch>
-                        <Input onChange={(e) => filterPokemons(e.target.value.toLowerCase())} placeholder='Search...' type='text'></Input>
+                        <Input onChange={({target}) => filterPokemons(target.value.toLowerCase())} placeholder='Search...' type='text'></Input>
                         <BtnSearch><BiSearch/></BtnSearch>
                     </ContainerSearch>
                 </SubHeader>
