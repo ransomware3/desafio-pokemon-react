@@ -16,7 +16,8 @@ import {
 
 const Home = () => {
 
-    const [pokemons, setPokemons] = useState([])
+    // const [pokemons, setPokemons] = useState([])
+    const [renderPokemons, setRenderPokemons] = useState([])
     const [SearchedPokemons, setSearchedPokemons] = useState([])
     const [number, setNumber] = useState(25)
 
@@ -24,6 +25,21 @@ const Home = () => {
         getPokemons()
         // eslint-disable-next-line
     }, [])
+
+    // const getAllPokemons = async () => {
+    //     let endpoints = []
+
+    //     for (let i = 1; i <= 50; i++) {
+    //         endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+    //     }
+
+    //     axios.all(endpoints.map((item) => axios.get(item))).then((res) => {
+    //         const data = res.map((item) => item.data)
+    //         setPokemons(data)
+    //     })
+    // }
+    // getAllPokemons()
+
 
     const getPokemons = () => {
 
@@ -36,7 +52,7 @@ const Home = () => {
         axios.all(endpoints.map((item) => axios.get(item)))
             .then((res) => {
                 const data = res.map((item) => item.data)
-                setPokemons(data)
+                setRenderPokemons(data)
             })
             .catch((error) => console.log('erro getPokemons' + error))
     }
@@ -52,7 +68,7 @@ const Home = () => {
         axios.all(endpoints.map((item) => axios.get(item)))
             .then((res) => {
                 const data = res.map((item) => item.data)
-                setPokemons([...pokemons, ...data])
+                setRenderPokemons([...renderPokemons, ...data])
             })
             .catch((error) => console.log('erro showMore' + error))
 
@@ -64,8 +80,7 @@ const Home = () => {
             setSearchedPokemons([])
             return
         } else {
-            const filteredPokemons = pokemons.filter((item) => item.name.includes(search))
-            console.log(search)
+            const filteredPokemons = renderPokemons.filter((item) => item.name.includes(search) || item.id.toString().includes(search))
             setSearchedPokemons(filteredPokemons)
         }
     }
@@ -103,7 +118,7 @@ const Home = () => {
                 }
 
                 <Ul>
-                    {pokemons.map((item, index) => {
+                    {renderPokemons.map((item, index) => {
 
                         const pokemonTypes = item.types
 
