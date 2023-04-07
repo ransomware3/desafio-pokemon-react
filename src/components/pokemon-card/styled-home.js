@@ -87,3 +87,14 @@ export const BtnCharge = styled.button`
         transform: scale(1.05);
     }
 `
+
+export const PLoading = styled.p`
+    color: #ccc;
+    font-weight: bold;
+    font-size: 30px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+`

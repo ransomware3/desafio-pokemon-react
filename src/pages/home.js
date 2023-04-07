@@ -1,7 +1,5 @@
 import { Header } from "../components/header"
 import axios from "axios"
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 import { useEffect, useState } from "react"
 import {
     Ul,
@@ -13,7 +11,8 @@ import {
     BtnCharge,
     ContainerTitle,
     P,
-    UlSearch
+    UlSearch,
+    PLoading
 } from '../components/pokemon-card/styled-home'
 
 const Home = () => {
@@ -92,7 +91,7 @@ const Home = () => {
 
     return (
         <>
-            <Header typeFilter={typeFilter} filterPokemons={filterPokemons}/>
+            <Header typeFilter={typeFilter} filterPokemons={filterPokemons} />
             <Section>
                 {SearchedPokemons.length > 0 && <UlSearch>
                     {SearchedPokemons.map((item, index) => {
@@ -107,45 +106,39 @@ const Home = () => {
                         }
 
                         return (
-                            <div key={index}>
-                                {isLoading === true ? (
-                                    <P>Loading...</P>
-                                ) : (
-                                    <Li key={index}>
-                                        <StyledLink>
-                                            <P>{getTypes()}</P>
-                                            <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
-                                            <ContainerTitle>
-                                                <H2>{item.id + '.'}</H2>
-                                                <H2>&nbsp;{item.name}</H2>
-                                            </ContainerTitle>
-                                        </StyledLink>
-                                    </Li>
-                                )}
-                            </div>
+                            <Li key={index}>
+                                <StyledLink>
+                                    <P>{getTypes()}</P>
+                                    <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
+                                    <ContainerTitle>
+                                        <H2>{item.id + '.'}</H2>
+                                        <H2>&nbsp;{item.name}</H2>
+                                    </ContainerTitle>
+                                </StyledLink>
+                            </Li>
                         )
                     })}
                 </UlSearch>
                 }
 
                 <Ul>
-                    {renderPokemons.map((item, index) => {
+                    {isLoading ? (
+                        <PLoading>Loading...</PLoading>
+                    ) : (
+                        <>
+                            {renderPokemons.map((item, index) => {
 
-                        const pokemonTypes = item.types
+                                const pokemonTypes = item.types
 
-                        const getTypes = () => {
-                            if (pokemonTypes[1]) {
-                                return pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name
-                            } else {
-                                return pokemonTypes[0].type.name
-                            }
-                        }
+                                const getTypes = () => {
+                                    if (pokemonTypes[1]) {
+                                        return pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name
+                                    } else {
+                                        return pokemonTypes[0].type.name
+                                    }
+                                }
 
-                        return (
-                            <div key={index}>
-                                {isLoading ? (
-                                    <Skeleton width={250} height={300}/>
-                                ) : (
+                                return (
                                     <Li key={index}>
                                         <StyledLink>
                                             <P>{getTypes()}</P>
@@ -156,12 +149,15 @@ const Home = () => {
                                             </ContainerTitle>
                                         </StyledLink>
                                     </Li>
-                                )}
-                            </div>
-                        )
-                    })}
+                                )
+                            })}
+                        </>
+                    )}
                 </Ul>
-                <BtnCharge onClick={showMore}>Carregar mais</BtnCharge>
+                {/* <BtnCharge onClick={showMore}>Carregar mais</BtnCharge> */}
+                {isLoading ? (<></>) : (
+                    <BtnCharge onClick={showMore}>Carregar mais</BtnCharge>
+                )}
             </Section>
         </>
     )
