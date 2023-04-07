@@ -49,7 +49,7 @@ const Header = ({ filterPokemons, typeFilter }) => {
                             setSelectedValue(target.value)
                             typeFilter(selectedValue)
                         }}>
-                        <Option value=''>type-filter</Option>
+                        <Option value=''>type-filter(none)</Option>
                         <Option value='normal'>Normal</Option>
                         <Option value='fighting'>Fighting</Option>
                         <Option value='flying'>Flying</Option>

@@ -1,14 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { SkeletonTheme } from "react-loading-skeleton"
 import { Home } from "./home"
 
+
 const AppRoutes = () => {
-    return(
+    return (
         <>
-            <BrowserRouter>
-                <Routes>
-                    <Route exact path="/" element={<Home/>}/>
-                </Routes>
-            </BrowserRouter>
+            <SkeletonTheme baseColor="#333" highlightColor="#444">
+                <BrowserRouter>
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                    </Routes>
+                </BrowserRouter>
+            </SkeletonTheme>
         </>
     )
 }

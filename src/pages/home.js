@@ -1,5 +1,7 @@
 import { Header } from "../components/header"
 import axios from "axios"
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { useEffect, useState } from "react"
 import {
     Ul,
@@ -18,9 +20,11 @@ const Home = () => {
     const [renderPokemons, setRenderPokemons] = useState([])
     const [SearchedPokemons, setSearchedPokemons] = useState([])
     const [number, setNumber] = useState(100)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         getPokemons()
+        setIsLoading(false)
         // eslint-disable-next-line
     }, [])
 
@@ -76,9 +80,9 @@ const Home = () => {
             const filteredTypes = renderPokemons.filter((item) => {
                 const pokeTypes = item.types
 
-                if(item.types[1]){
+                if (item.types[1]) {
                     return pokeTypes[0].type.name.includes(search) || pokeTypes[1].type.name.includes(search)
-                }else{
+                } else {
                     return pokeTypes[0].type.name.includes(search)
                 }
             })
@@ -88,34 +92,40 @@ const Home = () => {
 
     return (
         <>
-            <Header typeFilter={typeFilter} filterPokemons={filterPokemons} />
+            <Header typeFilter={typeFilter} filterPokemons={filterPokemons}/>
             <Section>
                 {SearchedPokemons.length > 0 && <UlSearch>
-                        {SearchedPokemons.map((item, index) => {
-                            const pokemonTypes = item.types
-                        
-                            const getTypes = () => {
-                                if (pokemonTypes[1]) {
-                                    return pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name
-                                } else {
-                                    return pokemonTypes[0].type.name
-                                }
+                    {SearchedPokemons.map((item, index) => {
+                        const pokemonTypes = item.types
+
+                        const getTypes = () => {
+                            if (pokemonTypes[1]) {
+                                return pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name
+                            } else {
+                                return pokemonTypes[0].type.name
                             }
-                        
-                            return (
-                                <Li key={index}>
-                                    <StyledLink>
-                                        <P>{getTypes()}</P>
-                                        <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
-                                        <ContainerTitle>
-                                            <H2>{item.id + '.'}</H2>
-                                            <H2>&nbsp;{item.name}</H2>
-                                        </ContainerTitle>
-                                    </StyledLink>
-                                </Li>
-                                )
-                        })}
-                    </UlSearch>
+                        }
+
+                        return (
+                            <div key={index}>
+                                {isLoading === true ? (
+                                    <P>Loading...</P>
+                                ) : (
+                                    <Li key={index}>
+                                        <StyledLink>
+                                            <P>{getTypes()}</P>
+                                            <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
+                                            <ContainerTitle>
+                                                <H2>{item.id + '.'}</H2>
+                                                <H2>&nbsp;{item.name}</H2>
+                                            </ContainerTitle>
+                                        </StyledLink>
+                                    </Li>
+                                )}
+                            </div>
+                        )
+                    })}
+                </UlSearch>
                 }
 
                 <Ul>
@@ -132,16 +142,22 @@ const Home = () => {
                         }
 
                         return (
-                            <Li key={index}>
-                                <StyledLink>
-                                    <P>{getTypes()}</P>
-                                    <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
-                                    <ContainerTitle>
-                                        <H2>{item.id + '.'}</H2>
-                                        <H2>&nbsp;{item.name}</H2>
-                                    </ContainerTitle>
-                                </StyledLink>
-                            </Li>
+                            <div key={index}>
+                                {isLoading ? (
+                                    <Skeleton width={250} height={300}/>
+                                ) : (
+                                    <Li key={index}>
+                                        <StyledLink>
+                                            <P>{getTypes()}</P>
+                                            <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
+                                            <ContainerTitle>
+                                                <H2>{item.id + '.'}</H2>
+                                                <H2>&nbsp;{item.name}</H2>
+                                            </ContainerTitle>
+                                        </StyledLink>
+                                    </Li>
+                                )}
+                            </div>
                         )
                     })}
                 </Ul>
