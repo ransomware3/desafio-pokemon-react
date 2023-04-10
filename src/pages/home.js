@@ -27,6 +27,8 @@ const Home = () => {
         // eslint-disable-next-line
     }, [])
 
+    renderPokemons.map((item) => console.log(item))
+
     const getPokemons = () => {
 
         let endpoints = []
@@ -64,7 +66,6 @@ const Home = () => {
     const filterPokemons = (search) => {
         if (search === "") {
             setSearchedPokemons([])
-            return
         } else {
             const filteredPokemons = renderPokemons.filter((item) => item.name.includes(search) || item.id.toString().includes(search))
             setSearchedPokemons(filteredPokemons)
