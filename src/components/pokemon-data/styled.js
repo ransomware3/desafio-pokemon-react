@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export const Section = styled.section`
     width: 100%;
@@ -11,9 +12,8 @@ export const Section = styled.section`
 `
 
 export const CardDiv = styled.div`
-    width: 1200px;
-    // height: 700px;
-    padding: 30px;
+    width: 1400px;
+    padding: 50px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +38,7 @@ export const ContainerUl = styled.div`
 `
 
 export const MiniContainerList = styled.div`
-    width: 20%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,19 +50,22 @@ export const Ul = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
-    background-color: #222;
+    padding: 20px 20px 0 20px;
+    background-color: #111;
     border-radius: 10px;
     overflow-y: auto;
-    // padding: 20px 0;
-    -webkit-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -3px 7px 8px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -3px 7px 8px 0px rgba(0,0,0,0.75);
+    box-shadow: -3px 7px 8px 0px rgba(0,0,0,0.75);
 `
 
 export const P = styled.p`
     color: #ccc;
     margin-bottom: 10px;
+`
+
+export const DescP = styled.p`
+    color: #777;
 `
 
 export const H2 = styled.h2`
@@ -74,4 +77,21 @@ export const H2 = styled.h2`
 export const H3 = styled.h3`
     color: #ccc;
     margin-bottom: 15px;
+`
+
+export const BackLink = styled(Link)`
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #222;
+    color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    -webkit-box-shadow: 0px 8px 6px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 8px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 8px 6px 0px rgba(0,0,0,0.75);
 `

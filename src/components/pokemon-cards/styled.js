@@ -77,14 +77,18 @@ export const BtnCharge = styled.button`
     border: none;
     border-radius: 15px;
     font-size: 16px;
-    background: rgb(255,0,0);
-    background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(228,0,0,1) 50%, rgba(107,0,0,1) 100%);
+    font-weight: bold;
+    background: #111;
+    color: #ccc;
     margin-top: 50px;
     cursor: pointer;
     transition: .2s;
+    -webkit-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
 
     &:hover{
-        transform: scale(1.05);
+        background: #222;
     }
 `
 

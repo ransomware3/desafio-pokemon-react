@@ -77,6 +77,7 @@ export const Select = styled.select`
     border-radius: 8px;
     padding: 0 10px;
     color: #ccc;
+    cursor: pointer;
 `
 
 export const Option = styled.option`

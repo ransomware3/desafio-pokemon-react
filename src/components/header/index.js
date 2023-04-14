@@ -9,7 +9,6 @@ import {
     Ul,
     LogoContainer,
     HeaderLimiter,
-    SLink,
     SubHeader,
     Select,
     Input,
@@ -30,16 +29,15 @@ const Header = ({ filterPokemons, typeFilter }) => {
 
     return (
         <>
-            <HeaderTag>
+            <HeaderTag id="top">
                 <HeaderOne>
                     <HeaderLimiter>
                         <LogoContainer>
-                            <ImgLogo src={Logo}></ImgLogo>
+                            <a href='/'><ImgLogo src={Logo}></ImgLogo></a>
                         </LogoContainer>
                         <Nav>
                             <Ul>
-                                <li><SLink to='/'>Home</SLink></li>
-                                <li><SAnchor rel="noopener noreferrer" target='_blank' href='https://pokeapi.co/'>API</SAnchor></li>
+                                <li><SAnchor rel="noopener noreferrer" target='_blank' href='https://pokeapi.co/'>PokeAPI</SAnchor></li>
                             </Ul>
                         </Nav>
                     </HeaderLimiter>
