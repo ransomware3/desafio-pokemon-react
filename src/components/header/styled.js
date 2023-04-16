@@ -16,7 +16,6 @@ export const HeaderOne = styled.div`
 export const SubHeader = styled.div`
     width: 100%;
     height: 60px;
-    background-color: #111;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,8 +71,7 @@ export const SAnchor = styled.a`
 export const Select = styled.select`
     width: 8%;
     height: 100%;
-    background-color: #333;
-    border: none;
+    border: 1px solid;
     border-radius: 8px;
     padding: 0 10px;
     color: #ccc;
@@ -96,12 +94,10 @@ export const ContainerSearch = styled.div`
 export const Input = styled.input`
     width: 60%;
     height: 100%;
-    background-color: #333;
-    border: none;
+    border: 1px solid;
     border-radius: 8px;
     padding: 0 20px;
     transition: .2s;
-    color: #ccc;
 
     &:focus{
         outline: 0;
@@ -114,7 +110,6 @@ export const BtnSearch = styled.div`
     height: 80%;
     position: absolute;
     right: 3px;
-    color: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;

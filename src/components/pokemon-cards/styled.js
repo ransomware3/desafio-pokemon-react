@@ -1,6 +1,11 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
+export const Main = styled.main`
+    width: 100%;
+    height: 100%;
+`
+
 export const Section = styled.section`
     width: 100%;
     display: flex;
@@ -31,7 +36,6 @@ export const UlSearch = styled.ul`
 export const Li = styled.li`
     width: 250px;
     height: 300px;
-    background-color: #111;
     background-position: center;
     border-radius: 10px;
     -webkit-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
@@ -46,13 +50,11 @@ export const ContainerTitle = styled.div`
 `
     
 export const H2 = styled.h2`    
-    color: #ccc;
     text-transform: uppercase;
     font-size: 20px;
 `
 
 export const P = styled.p`
-    color: #ccc;
     font-weight: bold;
 `
 
@@ -78,27 +80,10 @@ export const BtnCharge = styled.button`
     border-radius: 15px;
     font-size: 16px;
     font-weight: bold;
-    background: #111;
-    color: #ccc;
     margin-top: 50px;
     cursor: pointer;
     transition: .2s;
     -webkit-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
-
-    &:hover{
-        background: #222;
-    }
-`
-
-export const PLoading = styled.p`
-    color: #ccc;
-    font-weight: bold;
-    font-size: 30px;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding-top: 100px;
 `

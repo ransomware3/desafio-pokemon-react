@@ -1,9 +1,14 @@
 import { AppRoutes } from "./pages/routes"
+import { GlobalStyle } from "./style/global-style"
+import { ThemeeProvider } from './contexts/theme-context'
 
 function App() {
 	return (
 		<>
-			<AppRoutes/>
+			<ThemeeProvider>
+				<GlobalStyle/>
+				<AppRoutes/>
+			</ThemeeProvider>
 		</>
 	)
 }

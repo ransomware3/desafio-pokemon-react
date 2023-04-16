@@ -1,6 +1,9 @@
 import Logo from '../../images/pokemon-logo.png'
 import { useEffect, useState } from 'react'
 import { BiSearch } from 'react-icons/bi'
+import { ThemeToggler } from '../theme-toggler'
+import { useContext } from "react"
+import { ThemeeContext } from "../../contexts/theme-context"
 import {
     HeaderTag,
     HeaderOne,
@@ -22,6 +25,8 @@ const Header = ({ filterPokemons, typeFilter }) => {
 
     const [selectedValue, setSelectedValue] = useState('')
 
+    const { theme } = useContext(ThemeeContext)
+
     useEffect(() => {
         typeFilter(selectedValue)
         // eslint-disable-next-line
@@ -38,12 +43,13 @@ const Header = ({ filterPokemons, typeFilter }) => {
                         <Nav>
                             <Ul>
                                 <li><SAnchor rel="noopener noreferrer" target='_blank' href='https://pokeapi.co/'>PokeAPI</SAnchor></li>
+                                <li><ThemeToggler/></li>
                             </Ul>
                         </Nav>
                     </HeaderLimiter>
                 </HeaderOne>
-                <SubHeader>
-                    <Select value={selectedValue} onChange={({target}) => {
+                <SubHeader style={{ backgroundColor: theme.background2, color: theme.color }}>
+                    <Select style={{ backgroundColor: theme.background3, color: theme.color1,  borderColor: theme.color2 }} value={selectedValue} onChange={({target}) => {
                             setSelectedValue(target.value)
                             typeFilter(selectedValue)
                         }}>
@@ -68,8 +74,8 @@ const Header = ({ filterPokemons, typeFilter }) => {
                         <Option value='fairy'>Fairy</Option>
                     </Select>
                     <ContainerSearch>
-                        <Input onChange={({target}) => filterPokemons(target.value.toLowerCase())} placeholder='Search...' type='text'></Input>
-                        <BtnSearch><BiSearch/></BtnSearch>
+                        <Input style={{ backgroundColor: theme.background3, color: theme.color1, borderColor: theme.color2 }} onChange={({target}) => filterPokemons(target.value.toLowerCase())} placeholder='Search...' type='text'></Input>
+                        <BtnSearch style={{ color: theme.color1 }}><BiSearch/></BtnSearch>
                     </ContainerSearch>
                 </SubHeader>
             </HeaderTag>

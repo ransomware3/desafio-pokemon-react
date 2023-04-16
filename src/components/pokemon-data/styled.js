@@ -18,7 +18,6 @@ export const CardDiv = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #111;
     background-position: center;
     border-radius: 10px;
     -webkit-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);

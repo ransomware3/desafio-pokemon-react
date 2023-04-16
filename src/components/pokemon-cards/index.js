@@ -2,6 +2,8 @@ import { Header } from "../header"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { SkeletonStyled } from "../skeleton"
+import { useContext } from "react"
+import { ThemeeContext } from "../../contexts/theme-context"
 import {
     Ul,
     Li,
@@ -13,6 +15,7 @@ import {
     ContainerTitle,
     P,
     UlSearch,
+    Main
 } from './styled'
 
 const CardsPokemon = () => {
@@ -20,6 +23,8 @@ const CardsPokemon = () => {
     const [SearchedPokemons, setSearchedPokemons] = useState([])
     const [number, setNumber] = useState(100)
     const [isLoading, setIsLoading] = useState(true)
+
+    const { theme } = useContext(ThemeeContext)
 
     useEffect(() => {
         getPokemons()
@@ -88,7 +93,7 @@ const CardsPokemon = () => {
     }
 
     return (
-        <>
+        <Main style={{ backgroundColor: theme.background1 }}>
             <Header typeFilter={typeFilter} filterPokemons={filterPokemons} />
             <Section>
                 {SearchedPokemons.length > 0 && <UlSearch>
@@ -104,13 +109,13 @@ const CardsPokemon = () => {
                         }
 
                         return (
-                            <Li key={index}>
+                            <Li style={{ backgroundColor: theme.background2 }} key={index}>
                                 <StyledLink to={`/pokemon/${item.id}`}>
-                                    <P>{getTypes()}</P>
+                                    <P style={{ color: theme.color1 }}>{getTypes()}</P>
                                     <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
                                     <ContainerTitle>
-                                        <H2>{item.id + '.'}</H2>
-                                        <H2>&nbsp;{item.name}</H2>
+                                        <H2 style={{ color: theme.color1 }}>{item.id + '.'}</H2>
+                                        <H2 style={{ color: theme.color1 }}>&nbsp;{item.name}</H2>
                                     </ContainerTitle>
                                 </StyledLink>
                             </Li>
@@ -137,13 +142,13 @@ const CardsPokemon = () => {
                                 }
 
                                 return (
-                                    <Li key={index}>
+                                    <Li style={{ backgroundColor: theme.background2 }} key={index}>
                                         <StyledLink to={`/pokemon/${item.id}`}>
-                                            <P>{getTypes()}</P>
+                                            <P style={{ color: theme.color1 }}>{getTypes()}</P>
                                             <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
                                             <ContainerTitle>
-                                                <H2>{item.id + '.'}</H2>
-                                                <H2>&nbsp;{item.name}</H2>
+                                                <H2 style={{ color: theme.color1 }}>{item.id + '.'}</H2>
+                                                <H2 style={{ color: theme.color1 }}>&nbsp;{item.name}</H2>
                                             </ContainerTitle>
                                         </StyledLink>
                                     </Li>
@@ -153,10 +158,10 @@ const CardsPokemon = () => {
                     )}
                 </Ul>
                 {isLoading ? (<></>) : (
-                    <BtnCharge id="more" onClick={showMore}>SHOW MORE</BtnCharge>
+                    <BtnCharge style={{ backgroundColor: theme.background2, color: theme.color1 }} id="more" onClick={showMore}>SHOW MORE</BtnCharge>
                 )}
             </Section>
-        </>
+        </Main>
     )
 }
 
