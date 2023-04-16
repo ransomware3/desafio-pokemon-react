@@ -8,9 +8,12 @@ export const HeaderTag = styled.header`
 export const HeaderOne = styled.div`
     width: 100%;
     height: 80px;
-    background: #000;
     display: flex;
     justify-content: center;
+
+    @media(max-width: 977px){
+        height: 120px;
+    }
 `
 
 export const SubHeader = styled.div`
@@ -21,6 +24,12 @@ export const SubHeader = styled.div`
     align-items: center;
     gap: 180px;
     padding: 15px 0;
+
+    @media(max-width: 977px){
+        height: 120px;
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
 `
 
 export const HeaderLimiter = styled.div`
@@ -54,6 +63,13 @@ export const Ul = styled.ul`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
+    @media(max-width: 977px){
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
 `
 
 export const SLink = styled(Link)`
@@ -69,7 +85,7 @@ export const SAnchor = styled.a`
 `
 
 export const Select = styled.select`
-    width: 8%;
+    width: 150px;
     height: 100%;
     border: 1px solid;
     border-radius: 8px;
@@ -83,7 +99,7 @@ export const Option = styled.option`
 `
 
 export const ContainerSearch = styled.div`
-    width: 15%;
+    width: 300px;
     height: 100%;
     position: relative;
     display: flex;
@@ -101,6 +117,10 @@ export const Input = styled.input`
 
     &:focus{
         outline: 0;
+        width: 100%;
+    }
+
+    @media(max-width: 977px){
         width: 100%;
     }
 `

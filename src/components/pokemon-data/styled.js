@@ -27,6 +27,7 @@ export const CardDiv = styled.div`
 
 export const Img = styled.img`
     width: 400px;
+    margin: 40px 0;
 `
 
 export const ContainerUl = styled.div`
@@ -34,6 +35,11 @@ export const ContainerUl = styled.div`
     display: flex;
     justify-content: center;
     gap: 80px;
+
+    @media(max-width: 1200px){
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 export const MiniContainerList = styled.div`
@@ -41,6 +47,10 @@ export const MiniContainerList = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media(max-width: 1200px){
+        width: 80%;
+    }
 `
 
 export const Ul = styled.ul`
@@ -59,7 +69,6 @@ export const Ul = styled.ul`
 `
 
 export const P = styled.p`
-    color: #ccc;
     margin-bottom: 10px;
 `
 
@@ -67,14 +76,21 @@ export const DescP = styled.p`
     color: #777;
 `
 
+export const MovesP = styled.p`
+    font-weight: bold;
+    margin-bottom: 20px;
+`
+
 export const H2 = styled.h2`
     font-size: 35px;
-    color: #ccc;
     margin-bottom: 40px;
+
+    @media(max-width: 1200px){
+        margin-bottom: 80px;
+    }
 `
 
 export const H3 = styled.h3`
-    color: #ccc;
     margin-bottom: 15px;
 `
 
@@ -82,8 +98,6 @@ export const BackLink = styled(Link)`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #222;
-    color: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;

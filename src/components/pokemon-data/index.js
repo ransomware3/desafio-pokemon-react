@@ -15,7 +15,8 @@ import {
     H3,
     MiniContainerList,
     DescP,
-    BackLink
+    BackLink,
+    MovesP
 } from './styled'
 
 const PokeData = () => {
@@ -35,6 +36,8 @@ const PokeData = () => {
     }, [isLoading])
 
     const { id } = useParams()
+
+    const urlGif = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
 
     const getPokeData = (id) => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
@@ -68,41 +71,41 @@ const PokeData = () => {
         const pokemonTypes = poke.types
 
         if (pokemonTypes[1]) {
-            return pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name
+            return pokemonTypes[0].type.name.toUpperCase() + " / " + pokemonTypes[1].type.name.toUpperCase()
         } else {
-            return pokemonTypes[0].type.name
+            return pokemonTypes[0].type.name.toUpperCase()
         }
     }
 
     return (
         <>
-            <BackLink style={{ backgroundColor: theme.background2, color: theme.color1 }} to="/"><IoIosArrowBack/></BackLink>
-            <Section style={{ backgroundColor: theme.background1 }}>
+            <BackLink style={{ backgroundColor: theme.background1, color: theme.color3 }} to="/"><IoIosArrowBack/></BackLink>
+            <Section style={{ backgroundColor: theme.background2 }}>
                 {isLoading ? (
                     <P>Loading...</P>
                 ) : (
                     <>
-                        <CardDiv style={{ backgroundColor: theme.background2 }}>
-                            <P style={{ color: theme.color1 }}>{getTypes()}</P>
-                            <Img src={poke.sprites.front_default} alt={poke.name}></Img>
-                            <H2 style={{ color: theme.color1 }}>{poke.name}</H2>
+                        <CardDiv style={{ backgroundColor: theme.background1 }}>
+                            <P style={{ color: theme.color3, fontWeight: "bold" }}>{getTypes()}</P>
+                            <Img src={urlGif} alt={poke.name}></Img>
+                            <H2 style={{ color: theme.color3 }}>{poke.name.toUpperCase()}</H2>
                             <ContainerUl>
                                 <MiniContainerList>
-                                    <H3 style={{ color: theme.color1 }}>Moves</H3>
-                                    <Ul style={{ backgroundColor: theme.background2 }}>
+                                    <H3 style={{ color: theme.color3 }}>MOVES</H3>
+                                    <Ul style={{ backgroundColor: theme.background1 }}>
                                         {poke && pokeMoves.map((item, index) => (
                                             <li key={index}>
-                                                <P style={{ color: theme.color1 }}>{item.move.name}</P>
+                                                <MovesP style={{ color: theme.color3 }}>{item.move.name.toUpperCase()}</MovesP>
                                             </li>
                                         ))}
                                     </Ul>
                                 </MiniContainerList>
                                 <MiniContainerList>
-                                    <H3 style={{ color: theme.color1 }}>Abilities</H3>
-                                    <Ul style={{ backgroundColor: theme.background2 }}>
+                                    <H3 style={{ color: theme.color3 }}>ABILITIES</H3>
+                                    <Ul style={{ backgroundColor: theme.background1 }}>
                                         {poke && pokeAbilities.map((item, index) => (
                                             <li key={index}>
-                                                <H3 style={{ color: theme.color1 }}>{item.ability.name}</H3>
+                                                <H3 style={{ color: theme.color3 }}>{item.ability.name.toUpperCase()}</H3>
                                                 <DescP style={{ marginBottom: 30 }}>{abilityDesc[index]}</DescP>
                                             </li>
                                         ))}

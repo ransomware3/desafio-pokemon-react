@@ -35,7 +35,7 @@ const Header = ({ filterPokemons, typeFilter }) => {
     return (
         <>
             <HeaderTag id="top">
-                <HeaderOne>
+                <HeaderOne style={{ backgroundColor: theme.background4 }}>
                     <HeaderLimiter>
                         <LogoContainer>
                             <a href='/'><ImgLogo src={Logo}></ImgLogo></a>
@@ -49,7 +49,7 @@ const Header = ({ filterPokemons, typeFilter }) => {
                     </HeaderLimiter>
                 </HeaderOne>
                 <SubHeader style={{ backgroundColor: theme.background2, color: theme.color }}>
-                    <Select style={{ backgroundColor: theme.background3, color: theme.color1,  borderColor: theme.color2 }} value={selectedValue} onChange={({target}) => {
+                    <Select style={{ backgroundColor: theme.background3, color: theme.color3,  borderColor: theme.color2 }} value={selectedValue} onChange={({target}) => {
                             setSelectedValue(target.value)
                             typeFilter(selectedValue)
                         }}>
@@ -74,8 +74,8 @@ const Header = ({ filterPokemons, typeFilter }) => {
                         <Option value='fairy'>Fairy</Option>
                     </Select>
                     <ContainerSearch>
-                        <Input style={{ backgroundColor: theme.background3, color: theme.color1, borderColor: theme.color2 }} onChange={({target}) => filterPokemons(target.value.toLowerCase())} placeholder='Search...' type='text'></Input>
-                        <BtnSearch style={{ color: theme.color1 }}><BiSearch/></BtnSearch>
+                        <Input style={{ backgroundColor: theme.background3, color: theme.color3, borderColor: theme.color2 }} onChange={({target}) => filterPokemons(target.value.toLowerCase())} placeholder='Search...' type='text'></Input>
+                        <BtnSearch style={{ color: theme.color3 }}><BiSearch/></BtnSearch>
                     </ContainerSearch>
                 </SubHeader>
             </HeaderTag>
