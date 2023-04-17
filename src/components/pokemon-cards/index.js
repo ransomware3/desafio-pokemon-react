@@ -19,10 +19,10 @@ import {
 } from './styled'
 
 const CardsPokemon = () => {
-    const [renderPokemons, setRenderPokemons] = useState([])
-    const [SearchedPokemons, setSearchedPokemons] = useState([])
-    const [number, setNumber] = useState(200)
-    const [isLoading, setIsLoading] = useState(true)
+    const [ renderPokemons, setRenderPokemons ] = useState([])
+    const [ SearchedPokemons, setSearchedPokemons ] = useState([])
+    const [ number, setNumber ] = useState(200)
+    const [ isLoading, setIsLoading ] = useState(true)
 
     const { theme } = useContext(ThemeeContext)
 
@@ -48,7 +48,7 @@ const CardsPokemon = () => {
     }
 
     const showMore = () => {
-        const morePokemons = number + 200
+        const morePokemons = number + 50
         let endpoints = []
 
         for (let i = number + 1; i <= morePokemons; i++) {
