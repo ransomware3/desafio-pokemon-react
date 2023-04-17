@@ -96,7 +96,7 @@ const CardsPokemon = () => {
         <Main style={{ backgroundColor: theme.background1 }}>
             <Header typeFilter={typeFilter} filterPokemons={filterPokemons} />
             <Section>
-                {SearchedPokemons.length > 0 && <UlSearch>
+                {SearchedPokemons.length > 0 && <UlSearch style={{ borderColor: theme.color3}}>
                     {SearchedPokemons.map((item, index) => {
                         const pokemonTypes = item.types
 

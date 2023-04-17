@@ -29,7 +29,7 @@ export const UlSearch = styled.ul`
     flex-flow: row wrap;
     gap: 40px;
     margin-bottom: 60px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid;
     padding-bottom: 60px;
 `
 
