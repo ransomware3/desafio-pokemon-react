@@ -21,7 +21,7 @@ import {
 const CardsPokemon = () => {
     const [renderPokemons, setRenderPokemons] = useState([])
     const [SearchedPokemons, setSearchedPokemons] = useState([])
-    const [number, setNumber] = useState(100)
+    const [number, setNumber] = useState(200)
     const [isLoading, setIsLoading] = useState(true)
 
     const { theme } = useContext(ThemeeContext)
@@ -48,7 +48,7 @@ const CardsPokemon = () => {
     }
 
     const showMore = () => {
-        const morePokemons = number + 100
+        const morePokemons = number + 200
         let endpoints = []
 
         for (let i = number + 1; i <= morePokemons; i++) {
