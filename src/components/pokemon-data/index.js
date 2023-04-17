@@ -37,7 +37,7 @@ const PokeData = () => {
 
     const { id } = useParams()
 
-    const urlGif = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
+    const urlGif = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`
 
     const getPokeData = (id) => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)

@@ -99,6 +99,7 @@ const CardsPokemon = () => {
                 {SearchedPokemons.length > 0 && <UlSearch style={{ borderColor: theme.color3}}>
                     {SearchedPokemons.map((item, index) => {
                         const pokemonTypes = item.types
+                        const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`
 
                         const getTypes = () => {
                             if (pokemonTypes[1]) {
@@ -112,7 +113,7 @@ const CardsPokemon = () => {
                             <Li style={{ backgroundColor: theme.background2 }} key={index}>
                                 <StyledLink to={`/pokemon/${item.id}`}>
                                     <P style={{ color: theme.color1 }}>{getTypes()}</P>
-                                    <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
+                                    <Img alt="imagem do pokemon" src={imgUrl}></Img>
                                     <ContainerTitle>
                                         <H2 style={{ color: theme.color1 }}>{item.id + '.'}</H2>
                                         <H2 style={{ color: theme.color1 }}>&nbsp;{item.name}</H2>
@@ -132,6 +133,7 @@ const CardsPokemon = () => {
                             {renderPokemons.map((item, index) => {
 
                                 const pokemonTypes = item.types
+                                const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`
 
                                 const getTypes = () => {
                                     if (pokemonTypes[1]) {
@@ -145,7 +147,7 @@ const CardsPokemon = () => {
                                     <Li style={{ backgroundColor: theme.background2 }} key={index}>
                                         <StyledLink to={`/pokemon/${item.id}`}>
                                             <P style={{ color: theme.color1 }}>{getTypes()}</P>
-                                            <Img alt="imagem do pokemon" src={item.sprites.front_default}></Img>
+                                            <Img alt="imagem do pokemon" src={imgUrl}></Img>
                                             <ContainerTitle>
                                                 <H2 style={{ color: theme.color1 }}>{item.id + '.'}</H2>
                                                 <H2 style={{ color: theme.color1 }}>&nbsp;{item.name}</H2>
