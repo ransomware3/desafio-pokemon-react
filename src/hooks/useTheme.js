@@ -8,7 +8,7 @@ const useTheme = (key, initalState) => {
             return JSON.parse(storage)
         }else{
             return initalState
-        }
+        }        
     })
 
     useEffect(() => {

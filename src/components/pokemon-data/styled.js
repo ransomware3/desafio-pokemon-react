@@ -73,22 +73,24 @@ export const Ul = styled.ul`
 
 export const P = styled.p`
     margin-bottom: 10px;
-    color: #111;
+    color: #222;
 `
 
 export const DescP = styled.p`
     color: #333;
+    line-height: 22px;
 `
 
 export const MovesP = styled.p`
     font-weight: bold;
     margin-bottom: 20px;
+    color: #222;
 `
 
 export const H2 = styled.h2`
     font-size: 35px;
     margin-bottom: 40px;
-    color: #111;
+    color: #222;
 
     @media(max-width: 1200px){
         margin-bottom: 80px;
@@ -97,7 +99,7 @@ export const H2 = styled.h2`
 
 export const H3 = styled.h3`
     margin-bottom: 15px;
-    color: #111;
+    color: #222;
 `
 
 export const BackLink = styled(Link)`

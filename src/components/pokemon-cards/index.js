@@ -115,7 +115,7 @@ const CardsPokemon = () => {
                                     <P>{getTypes()}</P>
                                     <Img alt="imagem do pokemon" src={imgUrl}></Img>
                                     <ContainerTitle>
-                                        <H2>{item.id + '.'}</H2>
+                                        <H2>{'#' + item.id + ''}</H2>
                                         <H2>&nbsp;{item.name}</H2>
                                     </ContainerTitle>
                                 </StyledLink>
@@ -149,7 +149,7 @@ const CardsPokemon = () => {
                                             <P>{getTypes()}</P>
                                             <Img alt="imagem do pokemon" src={imgUrl}></Img>
                                             <ContainerTitle>
-                                                <H2>{item.id + '.'}</H2>
+                                                <H2>{'#' + item.id + ''}</H2>
                                                 <H2>&nbsp;{item.name}</H2>
                                             </ContainerTitle>
                                         </StyledLink>

@@ -85,7 +85,7 @@ export const SAnchor = styled.a`
 `
 
 export const Select = styled.select`
-    width: 150px;
+    width: 165px;
     height: 100%;
     border: 1px solid;
     border-radius: 8px;
