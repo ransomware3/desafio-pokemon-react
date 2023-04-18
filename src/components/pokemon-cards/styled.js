@@ -42,9 +42,14 @@ export const Li = styled.li`
     background-image: url(${BackgroundPage});
     background-position: center;
     background-size: cover;
+    transition: .2s;
     -webkit-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
+
+    &:hover{
+        transform: scale(1.03);
+    }
 `
 
 export const ContainerTitle = styled.div`
