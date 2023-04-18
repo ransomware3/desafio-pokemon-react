@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import BackgroundPage from '../../images/fundo-site.png'
 
 export const Section = styled.section`
     width: 100%;
@@ -20,6 +21,9 @@ export const CardDiv = styled.div`
     align-items: center;
     background-position: center;
     border-radius: 10px;
+    background-image: url(${BackgroundPage});
+    background-position: center;
+    background-size: cover;
     -webkit-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
@@ -60,7 +64,6 @@ export const Ul = styled.ul`
     flex-direction: column;
     align-items: center;
     padding: 20px 20px 0 20px;
-    background-color: #111;
     border-radius: 10px;
     overflow-y: auto;
     -webkit-box-shadow: -3px 7px 8px 0px rgba(0,0,0,0.75);
@@ -70,10 +73,11 @@ export const Ul = styled.ul`
 
 export const P = styled.p`
     margin-bottom: 10px;
+    color: #111;
 `
 
 export const DescP = styled.p`
-    color: #777;
+    color: #333;
 `
 
 export const MovesP = styled.p`
@@ -84,6 +88,7 @@ export const MovesP = styled.p`
 export const H2 = styled.h2`
     font-size: 35px;
     margin-bottom: 40px;
+    color: #111;
 
     @media(max-width: 1200px){
         margin-bottom: 80px;
@@ -92,6 +97,7 @@ export const H2 = styled.h2`
 
 export const H3 = styled.h3`
     margin-bottom: 15px;
+    color: #111;
 `
 
 export const BackLink = styled(Link)`

@@ -8,15 +8,15 @@ const ThemeToggler = () => {
     return(
         <>
             <ReactSwitch
-                onChange={() => setTheme(theme === themes.dark ? themes.light : themes.dark)}
-                checked={theme === themes.light}
+                onChange={() => setTheme(theme === themes.light ? themes.dark : themes.light)}
+                checked={theme === themes.dark}
                 checkedIcon={false}
                 uncheckedIcon={false}
                 height={10}
                 width={40}
                 handleDiameter={15}
-                offColor="#222"
-                onColor="#ffe2b0"
+                offColor="#ffe2b0"
+                onColor="#222"
             />
         </>
     )

@@ -79,33 +79,33 @@ const PokeData = () => {
 
     return (
         <>
-            <BackLink style={{ backgroundColor: theme.background1, color: theme.color3 }} to="/"><IoIosArrowBack/></BackLink>
-            <Section style={{ backgroundColor: theme.background2 }}>
+            <BackLink style={{ backgroundColor: theme.background2, color: theme.color1 }} to="/"><IoIosArrowBack/></BackLink>
+            <Section style={{ backgroundColor: theme.background1 }}>
                 {isLoading ? (
                     <P>Loading...</P>
                 ) : (
                     <>
-                        <CardDiv style={{ backgroundColor: theme.background1 }}>
-                            <P style={{ color: theme.color3, fontWeight: "bold" }}>{getTypes()}</P>
+                        <CardDiv>
+                            <P style={{ fontWeight: "bold" }}>{getTypes()}</P>
                             <Img src={urlGif} alt={poke.name}></Img>
-                            <H2 style={{ color: theme.color3 }}>{poke.name.toUpperCase()}</H2>
+                            <H2>{poke.name.toUpperCase()}</H2>
                             <ContainerUl>
                                 <MiniContainerList>
-                                    <H3 style={{ color: theme.color3 }}>MOVES</H3>
-                                    <Ul style={{ backgroundColor: theme.background1 }}>
+                                    <H3>MOVES</H3>
+                                    <Ul>
                                         {poke && pokeMoves.map((item, index) => (
                                             <li key={index}>
-                                                <MovesP style={{ color: theme.color3 }}>{item.move.name.toUpperCase()}</MovesP>
+                                                <MovesP>{item.move.name.toUpperCase()}</MovesP>
                                             </li>
                                         ))}
                                     </Ul>
                                 </MiniContainerList>
                                 <MiniContainerList>
-                                    <H3 style={{ color: theme.color3 }}>ABILITIES</H3>
-                                    <Ul style={{ backgroundColor: theme.background1 }}>
+                                    <H3>ABILITIES</H3>
+                                    <Ul>
                                         {poke && pokeAbilities.map((item, index) => (
                                             <li key={index}>
-                                                <H3 style={{ color: theme.color3 }}>{item.ability.name.toUpperCase()}</H3>
+                                                <H3>{item.ability.name.toUpperCase()}</H3>
                                                 <DescP style={{ marginBottom: 30 }}>{abilityDesc[index]}</DescP>
                                             </li>
                                         ))}

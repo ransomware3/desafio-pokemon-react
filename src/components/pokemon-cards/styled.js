@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import BackgroundPage from '../../images/fundo-site.png'
 
 export const Main = styled.main`
     width: 100%;
@@ -38,6 +39,9 @@ export const Li = styled.li`
     height: 300px;
     background-position: center;
     border-radius: 10px;
+    background-image: url(${BackgroundPage});
+    background-position: center;
+    background-size: cover;
     -webkit-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
@@ -52,10 +56,12 @@ export const ContainerTitle = styled.div`
 export const H2 = styled.h2`    
     text-transform: uppercase;
     font-size: 20px;
+    color: #fff;
 `
 
 export const P = styled.p`
     font-weight: bold;
+    color: #fff;
 `
 
 export const Img = styled.img`

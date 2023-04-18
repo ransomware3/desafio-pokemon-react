@@ -21,8 +21,8 @@ export const themes = {
         background2: "#c63140",
         background3: "#ccc",
         background4: "#6b0000",
-        skeletonColor: "#ff4444",
-        skeletonHigh: "#ff6666"
+        skeletonColor: "#e6cca1",
+        skeletonHigh: "#f5daab"
     }
 }
 
@@ -30,7 +30,7 @@ export const ThemeeContext = createContext({})
 
 export const ThemeeProvider = ({children}) => {
 
-    const [theme, setTheme] = useTheme('theme', themes.dark)
+    const [theme, setTheme] = useTheme('theme', themes.light)
 
     return(
         <>
