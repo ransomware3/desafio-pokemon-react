@@ -146,7 +146,7 @@ const CardsPokemon = () => {
                                 return (
                                     <Li key={index}>
                                         <StyledLink to={`/pokemon/${item.id}`}>
-                                            <P>{getTypes()}</P>
+                                            <P>{'type: ' + getTypes()}</P>
                                             <Img alt="imagem do pokemon" src={imgUrl}></Img>
                                             <ContainerTitle>
                                                 <H2>{'#' + item.id + ''}</H2>
