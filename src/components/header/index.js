@@ -17,7 +17,6 @@ import {
     Input,
     ContainerSearch,
     BtnSearch,
-    Option,
     SAnchor
 } from './styled'
 
@@ -48,30 +47,30 @@ const Header = ({ filterPokemons, typeFilter }) => {
                         </Nav>
                     </HeaderLimiter>
                 </HeaderOne>
-                <SubHeader style={{ backgroundColor: theme.background2, color: theme.color }}>
+                <SubHeader style={{ backgroundColor: theme.background2 }}>
                     <Select style={{ backgroundColor: theme.background3, color: theme.color3,  borderColor: theme.color2 }} value={selectedValue} onChange={({target}) => {
                             setSelectedValue(target.value)
                             typeFilter(selectedValue)
                         }}>
-                        <Option value=''>type-filter(none)</Option>
-                        <Option value='normal'>Normal</Option>
-                        <Option value='fighting'>Fighting</Option>
-                        <Option value='flying'>Flying</Option>
-                        <Option value='poison'>Poison</Option>
-                        <Option value='ground'>Ground</Option>
-                        <Option value='rock'>Rock</Option>
-                        <Option value='bug'>Bug</Option>
-                        <Option value='ghost'>Ghost</Option>
-                        <Option value='steel'>Steel</Option>
-                        <Option value='fire'>Fire</Option>
-                        <Option value='water'>Water</Option>
-                        <Option value='grass'>Grass</Option>
-                        <Option value='electric'>Electric</Option>
-                        <Option value='psychic'>Psychic</Option>
-                        <Option value='ice'>Ice</Option>
-                        <Option value='dragon'>Dragon</Option>
-                        <Option value='dark'>Dark</Option>
-                        <Option value='fairy'>Fairy</Option>
+                        <option style={{ color: theme.color3 }} value=''>type-filter(none)</option>
+                        <option style={{ color: theme.color3 }} value='normal'>Normal</option>
+                        <option style={{ color: theme.color3 }} value='fighting'>Fighting</option>
+                        <option style={{ color: theme.color3 }} value='flying'>Flying</option>
+                        <option style={{ color: theme.color3 }} value='poison'>Poison</option>
+                        <option style={{ color: theme.color3 }} value='ground'>Ground</option>
+                        <option style={{ color: theme.color3 }} value='rock'>Rock</option>
+                        <option style={{ color: theme.color3 }} value='bug'>Bug</option>
+                        <option style={{ color: theme.color3 }} value='ghost'>Ghost</option>
+                        <option style={{ color: theme.color3 }} value='steel'>Steel</option>
+                        <option style={{ color: theme.color3 }} value='fire'>Fire</option>
+                        <option style={{ color: theme.color3 }} value='water'>Water</option>
+                        <option style={{ color: theme.color3 }} value='grass'>Grass</option>
+                        <option style={{ color: theme.color3 }} value='electric'>Electric</option>
+                        <option style={{ color: theme.color3 }} value='psychic'>Psychic</option>
+                        <option style={{ color: theme.color3 }} value='ice'>Ice</option>
+                        <option style={{ color: theme.color3 }} value='dragon'>Dragon</option>
+                        <option style={{ color: theme.color3 }} value='dark'>Dark</option>
+                        <option style={{ color: theme.color3 }} value='fairy'>Fairy</option>
                     </Select>
                     <ContainerSearch>
                         <Input style={{ backgroundColor: theme.background3, color: theme.color3, borderColor: theme.color2 }} onChange={({target}) => filterPokemons(target.value.toLowerCase())} placeholder='Search...' type='text'></Input>

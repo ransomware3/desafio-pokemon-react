@@ -19,10 +19,10 @@ import {
 } from './styled'
 
 const CardsPokemon = () => {
-    const [ renderPokemons, setRenderPokemons ] = useState([])
-    const [ SearchedPokemons, setSearchedPokemons ] = useState([])
-    const [ number, setNumber ] = useState(200)
-    const [ isLoading, setIsLoading ] = useState(true)
+    const [renderPokemons, setRenderPokemons] = useState([])
+    const [searchedPokemons, setSearchedPokemons] = useState([])
+    const [number, setNumber] = useState(200)
+    const [isLoading, setIsLoading] = useState(true)
 
     const { theme } = useContext(ThemeeContext)
 
@@ -32,7 +32,6 @@ const CardsPokemon = () => {
     }, [])
 
     const getPokemons = () => {
-
         let endpoints = []
 
         for (let i = 1; i <= number; i++) {
@@ -82,11 +81,7 @@ const CardsPokemon = () => {
             const filteredTypes = renderPokemons.filter((item) => {
                 const pokeTypes = item.types
 
-                if (item.types[1]) {
-                    return pokeTypes[0].type.name.includes(search) || pokeTypes[1].type.name.includes(search)
-                } else {
-                    return pokeTypes[0].type.name.includes(search)
-                }
+                return (item.types[1]) ? pokeTypes[0].type.name.includes(search) || pokeTypes[1].type.name.includes(search) : pokeTypes[0].type.name.includes(search)
             })
             setSearchedPokemons(filteredTypes)
         }
@@ -96,23 +91,19 @@ const CardsPokemon = () => {
         <Main style={{ backgroundColor: theme.background1 }}>
             <Header typeFilter={typeFilter} filterPokemons={filterPokemons} />
             <Section>
-                {SearchedPokemons.length > 0 && <UlSearch style={{ borderColor: theme.color3}}>
-                    {SearchedPokemons.map((item, index) => {
+                {searchedPokemons.length > 0 && <UlSearch style={{ borderColor: theme.color3 }}>
+                    {searchedPokemons.map((item, index) => {
                         const pokemonTypes = item.types
                         const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`
 
-                        const getTypes = () => {
-                            if (pokemonTypes[1]) {
-                                return pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name
-                            } else {
-                                return pokemonTypes[0].type.name
-                            }
+                        const getSearchedTypes = () => {
+                            return (pokemonTypes[1]) ? pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name : pokemonTypes[0].type.name
                         }
 
                         return (
                             <Li key={index}>
                                 <StyledLink to={`/pokemon/${item.id}`}>
-                                    <P>{getTypes()}</P>
+                                    <P>{getSearchedTypes()}</P>
                                     <Img alt="imagem do pokemon" src={imgUrl}></Img>
                                     <ContainerTitle>
                                         <H2>{'#' + item.id + ''}</H2>
@@ -127,7 +118,7 @@ const CardsPokemon = () => {
 
                 <Ul>
                     {isLoading ? (
-                        <SkeletonStyled/>
+                        <SkeletonStyled />
                     ) : (
                         <>
                             {renderPokemons.map((item, index) => {
@@ -135,18 +126,14 @@ const CardsPokemon = () => {
                                 const pokemonTypes = item.types
                                 const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`
 
-                                const getTypes = () => {
-                                    if (pokemonTypes[1]) {
-                                        return pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name
-                                    } else {
-                                        return pokemonTypes[0].type.name
-                                    }
+                                const getRenderedTypes = () => {
+                                    return (pokemonTypes[1]) ? pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name : pokemonTypes[0].type.name
                                 }
 
                                 return (
                                     <Li key={index}>
                                         <StyledLink to={`/pokemon/${item.id}`}>
-                                            <P>{'type: ' + getTypes()}</P>
+                                            <P>{getRenderedTypes()}</P>
                                             <Img alt="imagem do pokemon" src={imgUrl}></Img>
                                             <ContainerTitle>
                                                 <H2>{'#' + item.id + ''}</H2>

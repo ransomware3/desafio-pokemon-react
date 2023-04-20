@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# PokeDados | Dados de pokemóns
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Uma aplicação React feita em CRA (create-react-app) que consome e trata dados da [PokeAPI](https://pokeapi.co/) ,  &nbsp;a api pública de pokemóns
+<br>
+<br>
 
-## Available Scripts
+### Aplicação no ar :  &nbsp;[Clique aqui](https://desafio-pokemon-react.vercel.app/)
+<br>
+<br>
 
-In the project directory, you can run:
+## Propósito da aplicação :
 
-### `npm start`
+Renderiza uma lista de pokemons que se inicia com um total de 200 posições e que aumenta de tamanho em 50 posições de acordo com o clique do usuário em um botão.
+<br>
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Funcionalidades :
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ - Campo input para busca de Pokemons por `NOME` ou `ID`
+ - Campo select para filtro de Pokemons por `TIPO`
+ - Alternador de temas para `LIGHT` e `DARK`
+ - Botão `SHOW MORE` que adiciona +50 pokemons à listagem atual
+ - Página detalhada individual, contendo mais informações sobre cada Pokemon
+ - Botões de navegação para o topo e final da página
+<br>
+<br>
 
-### `npm test`
+## Design responsivo porém focado em `Desktop`
+<br>
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tecnologias utilizadas :
 
-### `npm run build`
+ - `React.js` : Pela possibilidade da criação de componentes individuais
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ - `Styled Components` : Pela estilização facilitada em JS e mais segura para páginas com renderização dinâmica
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ - `React Router` : Pela criação de rotas e desenvolvimento de uma SPA (single page application) 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ - `Axios` : Para mehor e mais facilitado consumo de api's
 
-### `npm run eject`
+ - `Context API` : Para gerenciamento de contextos mais eficaz
+<br>
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Decisões adotadas durante o desenvolvimento :
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ - `Adicionar o ID na listagem inicial` : Para que a busca pudesse ser feita também por ID
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+ - `Buscar outras imagens para listagem inicial e novos GIFs para a página detalhada` : Para um design mais bonito e profissional
+<br>
+<br>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#
+<br>
 
-## Learn More
+## "Como posso rodar o projeto em minha máquina?"
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ - Instalar o Node.js versão LTS ou Current (LTS recomendada).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ - Inicializar uma pasta com git e dar um "git clone < url-do-projeto >"
 
-### Code Splitting
+ - Com o terminal aberto dar um "npm install", para instalar todas as dependências necessárias
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ - Dar um "npm start", para rodar o projeto em uma porta local

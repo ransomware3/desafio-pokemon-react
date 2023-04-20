@@ -97,4 +97,8 @@ export const BtnCharge = styled.button`
     -webkit-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
+
+    &:hover{
+        transform: scale(0.95);
+    }
 `

@@ -1,6 +1,5 @@
 import { createContext } from "react"
 import { useTheme } from "../hooks/useTheme"
-// import { useState } from "react"
 
 export const themes = {
     dark: {
@@ -32,7 +31,6 @@ export const ThemeeContext = createContext({})
 export const ThemeeProvider = ({children}) => {
 
     const [theme, setTheme] = useTheme('theme', themes.light)
-    // const [theme, setTheme] = useState(themes.light)
 
     return(
         <>

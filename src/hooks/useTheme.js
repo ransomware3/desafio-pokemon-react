@@ -4,11 +4,7 @@ const useTheme = (key, initalState) => {
     const [state, setState] = useState(() => {
         const storage = localStorage.getItem(key)
 
-        if(storage){
-            return JSON.parse(storage)
-        }else{
-            return initalState
-        }        
+        return (storage) ? JSON.parse(storage) : initalState      
     })
 
     useEffect(() => {

@@ -70,11 +70,7 @@ const PokeData = () => {
     const getTypes = () => {
         const pokemonTypes = poke.types
 
-        if (pokemonTypes[1]) {
-            return pokemonTypes[0].type.name.toUpperCase() + " / " + pokemonTypes[1].type.name.toUpperCase()
-        } else {
-            return pokemonTypes[0].type.name.toUpperCase()
-        }
+        return (pokemonTypes[1]) ? pokemonTypes[0].type.name.toUpperCase() + " / " + pokemonTypes[1].type.name.toUpperCase() : pokemonTypes[0].type.name.toUpperCase()
     }
 
     return (

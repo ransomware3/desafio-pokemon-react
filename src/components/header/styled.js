@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { Link } from 'react-router-dom'
 
 export const HeaderTag = styled.header`
     width: 100%;
@@ -72,12 +71,6 @@ export const Ul = styled.ul`
     }
 `
 
-export const SLink = styled(Link)`
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #fff;
-`
-
 export const SAnchor = styled.a`
     text-transform: uppercase;
     font-weight: bold;
@@ -90,12 +83,7 @@ export const Select = styled.select`
     border: 1px solid;
     border-radius: 8px;
     padding: 0 10px;
-    color: #ccc;
     cursor: pointer;
-`
-
-export const Option = styled.option`
-    color: #ccc;
 `
 
 export const ContainerSearch = styled.div`
