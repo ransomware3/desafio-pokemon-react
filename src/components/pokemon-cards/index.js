@@ -87,66 +87,54 @@ const CardsPokemon = () => {
         }
     }
 
+    const RenderList = (pokeList) => (
+        <>
+            {
+                pokeList.map((item, index) => {
+                    const pokemonTypes = item.types
+                    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`
+
+                    const getTypes = () => {
+                        return (pokemonTypes[1]) ? pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name : pokemonTypes[0].type.name
+                    }
+
+                    return (
+                        <Li key={index}>
+                            <StyledLink to={`/pokemon/${item.id}`}>
+                                <P>{getTypes()}</P>
+                                <Img alt="imagem do pokemon" src={imgUrl}></Img>
+                                <ContainerTitle>
+                                    <H2>{'#' + item.id + ''}</H2>
+                                    <H2>&nbsp;{item.name}</H2>
+                                </ContainerTitle>
+                            </StyledLink>
+                        </Li>
+                    )
+                })
+            }
+        </>
+    )
+
     return (
         <Main style={{ backgroundColor: theme.background1 }}>
             <Header typeFilter={typeFilter} filterPokemons={filterPokemons} />
             <Section>
-                {searchedPokemons.length > 0 && <UlSearch style={{ borderColor: theme.color3 }}>
-                    {searchedPokemons.map((item, index) => {
-                        const pokemonTypes = item.types
-                        const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`
-
-                        const getSearchedTypes = () => {
-                            return (pokemonTypes[1]) ? pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name : pokemonTypes[0].type.name
-                        }
-
-                        return (
-                            <Li key={index}>
-                                <StyledLink to={`/pokemon/${item.id}`}>
-                                    <P>{getSearchedTypes()}</P>
-                                    <Img alt="imagem do pokemon" src={imgUrl}></Img>
-                                    <ContainerTitle>
-                                        <H2>{'#' + item.id + ''}</H2>
-                                        <H2>&nbsp;{item.name}</H2>
-                                    </ContainerTitle>
-                                </StyledLink>
-                            </Li>
-                        )
-                    })}
-                </UlSearch>
-                }
+                {searchedPokemons.length > 0 && (
+                    <UlSearch style={{ borderColor: theme.color3 }}>
+                        {RenderList(searchedPokemons)}
+                    </UlSearch>
+                )}
 
                 <Ul>
                     {isLoading ? (
-                        <SkeletonStyled />
+                        <SkeletonStyled/>
                     ) : (
                         <>
-                            {renderPokemons.map((item, index) => {
-
-                                const pokemonTypes = item.types
-                                const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`
-
-                                const getRenderedTypes = () => {
-                                    return (pokemonTypes[1]) ? pokemonTypes[0].type.name + " / " + pokemonTypes[1].type.name : pokemonTypes[0].type.name
-                                }
-
-                                return (
-                                    <Li key={index}>
-                                        <StyledLink to={`/pokemon/${item.id}`}>
-                                            <P>{getRenderedTypes()}</P>
-                                            <Img alt="imagem do pokemon" src={imgUrl}></Img>
-                                            <ContainerTitle>
-                                                <H2>{'#' + item.id + ''}</H2>
-                                                <H2>&nbsp;{item.name}</H2>
-                                            </ContainerTitle>
-                                        </StyledLink>
-                                    </Li>
-                                )
-                            })}
+                            {RenderList(renderPokemons)}
                         </>
                     )}
                 </Ul>
-                {isLoading ? (<></>) : (
+                {isLoading ? (null) : (
                     <BtnCharge style={{ backgroundColor: theme.background2, color: theme.color1 }} id="more" onClick={showMore}>SHOW MORE</BtnCharge>
                 )}
             </Section>
