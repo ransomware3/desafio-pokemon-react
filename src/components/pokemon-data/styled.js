@@ -10,6 +10,7 @@ export const Section = styled.section`
     justify-content: center;
     align-items: center;
     padding: 50px;
+    background-color: ${props => props.theme.background1};
 `
 
 export const CardDiv = styled.div`
@@ -24,6 +25,7 @@ export const CardDiv = styled.div`
     background-image: url(${BackgroundPage});
     background-position: center;
     background-size: cover;
+    
     -webkit-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.75);
@@ -66,6 +68,7 @@ export const Ul = styled.ul`
     padding: 20px 20px 0 20px;
     border-radius: 10px;
     overflow-y: auto;
+
     -webkit-box-shadow: -3px 7px 8px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: -3px 7px 8px 0px rgba(0,0,0,0.75);
     box-shadow: -3px 7px 8px 0px rgba(0,0,0,0.75);
@@ -74,11 +77,13 @@ export const Ul = styled.ul`
 export const P = styled.p`
     margin-bottom: 10px;
     color: #222;
+    font-weight: bold;
 `
 
 export const DescP = styled.p`
     color: #333;
     line-height: 22px;
+    margin-bottom: 30px;
 `
 
 export const MovesP = styled.p`
@@ -112,6 +117,9 @@ export const BackLink = styled(Link)`
     position: absolute;
     left: 20px;
     top: 20px;
+    background-color: ${props => props.theme.background2};
+    color: ${props => props.theme.color1};
+
     -webkit-box-shadow: 0px 8px 6px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 8px 6px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 8px 6px 0px rgba(0,0,0,0.75);

@@ -2,8 +2,6 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { IoIosArrowBack } from 'react-icons/io'
-import { useContext } from "react"
-import { ThemeeContext } from "../../contexts/theme-context"
 import {
     Section,
     CardDiv,
@@ -19,15 +17,13 @@ import {
     MovesP
 } from './styled'
 
-const PokeData = () => {
+export const PokeData = () => {
     const [poke, setPoke] = useState()
     const [pokeMoves, setPokeMoves] = useState([])
     const [pokeAbilities, setPokeAbilities] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [abilityUrls, setAbilityUrls] = useState([])
     const [abilityDesc, setAbilityDesc] = useState([])
-
-    const { theme } = useContext(ThemeeContext)
 
     useEffect(() => {
         getPokeData(id)
@@ -79,7 +75,7 @@ const PokeData = () => {
                 <P>Loading...</P>
             ) : (
                 <CardDiv>
-                    <P style={{ fontWeight: "bold" }}>{getTypes()}</P>
+                    <P>{getTypes()}</P>
                     <Img src={urlGif} alt={poke.name}></Img>
                     <H2>{poke.name.toUpperCase()}</H2>
                     <ContainerUl>
@@ -99,7 +95,7 @@ const PokeData = () => {
                                 {poke && pokeAbilities.map((item, index) => (
                                     <li key={index}>
                                         <H3>{item.ability.name.toUpperCase()}</H3>
-                                        <DescP style={{ marginBottom: 30 }}>{abilityDesc[index]}</DescP>
+                                        <DescP>{abilityDesc[index]}</DescP>
                                     </li>
                                 ))}
                             </Ul>
@@ -113,12 +109,10 @@ const PokeData = () => {
 
     return (
         <>
-            <BackLink style={{ backgroundColor: theme.background2, color: theme.color1 }} to="/"><IoIosArrowBack /></BackLink>
-            <Section style={{ backgroundColor: theme.background1 }}>
+            <BackLink to="/"><IoIosArrowBack /></BackLink>
+            <Section>
                 {RenderList()}
             </Section>
         </>
     )
 }
-
-export { PokeData }

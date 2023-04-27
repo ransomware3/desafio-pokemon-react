@@ -2,8 +2,6 @@ import { Header } from "../header"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { SkeletonStyled } from "../skeleton"
-import { useContext } from "react"
-import { ThemeeContext } from "../../contexts/theme-context"
 import {
     Ul,
     Li,
@@ -18,13 +16,11 @@ import {
     Main
 } from './styled'
 
-const CardsPokemon = () => {
+export const CardsPokemon = () => {
     const [renderPokemons, setRenderPokemons] = useState([])
     const [searchedPokemons, setSearchedPokemons] = useState([])
     const [number, setNumber] = useState(200)
     const [isLoading, setIsLoading] = useState(true)
-
-    const { theme } = useContext(ThemeeContext)
 
     useEffect(() => {
         getPokemons()
@@ -116,11 +112,11 @@ const CardsPokemon = () => {
     )
 
     return (
-        <Main style={{ backgroundColor: theme.background1 }}>
+        <Main>
             <Header typeFilter={typeFilter} filterPokemons={filterPokemons} />
             <Section>
                 {searchedPokemons.length > 0 && (
-                    <UlSearch style={{ borderColor: theme.color3 }}>
+                    <UlSearch>
                         {RenderList(searchedPokemons)}
                     </UlSearch>
                 )}
@@ -135,11 +131,9 @@ const CardsPokemon = () => {
                     )}
                 </Ul>
                 {isLoading ? (null) : (
-                    <BtnCharge style={{ backgroundColor: theme.background2, color: theme.color1 }} id="more" onClick={showMore}>SHOW MORE</BtnCharge>
+                    <BtnCharge id="more" onClick={showMore}>SHOW MORE</BtnCharge>
                 )}
             </Section>
         </Main>
     )
 }
-
-export { CardsPokemon }

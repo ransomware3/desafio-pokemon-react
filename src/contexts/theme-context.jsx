@@ -1,5 +1,6 @@
 import { createContext } from "react"
 import { useTheme } from "../hooks/useTheme"
+import { ThemeProvider } from "styled-components"
 
 export const themes = {
     dark: {
@@ -28,14 +29,16 @@ export const themes = {
 
 export const ThemeeContext = createContext({})
 
-export const ThemeeProvider = ({children}) => {
+export const ThemeeProvider = ({ children }) => {
 
     const [theme, setTheme] = useTheme('theme', themes.light)
 
-    return(
+    return (
         <>
-            <ThemeeContext.Provider value={{theme, setTheme}}>
-                {children}
+            <ThemeeContext.Provider value={{ theme, setTheme }}>
+                <ThemeProvider theme={theme}>
+                    {children}
+                </ThemeProvider>
             </ThemeeContext.Provider>
         </>
     )

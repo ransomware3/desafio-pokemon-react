@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { ThemeeContext, themes } from "../../contexts/theme-context"
 import ReactSwitch from "react-switch"
 
-const ThemeToggler = () => {
+export const ThemeToggler = () => {
     const { theme, setTheme } = useContext(ThemeeContext)
 
     const handleTheme = () => {
@@ -25,5 +25,3 @@ const ThemeToggler = () => {
         </>
     )
 }
-
-export { ThemeToggler }

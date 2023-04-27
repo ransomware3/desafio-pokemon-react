@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const useTheme = (key, initalState) => {
+export const useTheme = (key, initalState) => {
     const [state, setState] = useState(() => {
         const storage = localStorage.getItem(key)
 
@@ -13,5 +13,3 @@ const useTheme = (key, initalState) => {
 
     return [state, setState]
 }
-
-export { useTheme }

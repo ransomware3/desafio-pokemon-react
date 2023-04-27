@@ -9,6 +9,7 @@ export const HeaderOne = styled.div`
     height: 80px;
     display: flex;
     justify-content: center;
+    background-color: ${props => props.theme.background4};
 
     @media(max-width: 977px){
         height: 120px;
@@ -23,6 +24,7 @@ export const SubHeader = styled.div`
     align-items: center;
     gap: 180px;
     padding: 15px 0;
+    background-color: ${props => props.theme.background2};
 
     @media(max-width: 977px){
         height: 120px;
@@ -84,6 +86,13 @@ export const Select = styled.select`
     border-radius: 8px;
     padding: 0 10px;
     cursor: pointer;
+    background-color: ${props => props.theme.background3};
+    color: ${props => props.theme.color3};
+    border-color: ${props => props.theme.color2};
+`
+
+export const Option = styled.option`
+    color: ${props => props.theme.color3};
 `
 
 export const ContainerSearch = styled.div`
@@ -102,6 +111,9 @@ export const Input = styled.input`
     border-radius: 8px;
     padding: 0 20px;
     transition: .2s;
+    background-color: ${props => props.theme.background3};
+    color: ${props => props.theme.color3};
+    border-color: ${props => props.theme.color2};
 
     &:focus{
         outline: 0;
@@ -121,4 +133,5 @@ export const BtnSearch = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: ${props => props.theme.color3};
 `

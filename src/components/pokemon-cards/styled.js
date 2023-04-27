@@ -5,6 +5,7 @@ import BackgroundPage from '../../images/fundo-site.png'
 export const Main = styled.main`
     width: 100%;
     height: 100%;
+    background-color: ${props => props.theme.background1};
 `
 
 export const Section = styled.section`
@@ -32,6 +33,7 @@ export const UlSearch = styled.ul`
     margin-bottom: 60px;
     border-bottom: 1px solid;
     padding-bottom: 60px;
+    border-color: ${props => props.theme.color3};
 `
 
 export const Li = styled.li`
@@ -94,6 +96,9 @@ export const BtnCharge = styled.button`
     margin-top: 50px;
     cursor: pointer;
     transition: .2s;
+    background-color: ${props => props.theme.background2};
+    color: ${props => props.theme.color1};
+
     -webkit-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 7px 7px 0px rgba(0,0,0,0.75);

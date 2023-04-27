@@ -6,7 +6,7 @@ import { useContext } from "react"
 import { ThemeeContext } from "../contexts/theme-context"
 
 
-const AppRoutes = () => {
+export const AppRoutes = () => {
 
     const { theme } = useContext(ThemeeContext)
 
@@ -23,5 +23,3 @@ const AppRoutes = () => {
         </>
     )
 }
-
-export { AppRoutes }

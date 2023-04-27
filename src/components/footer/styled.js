@@ -6,4 +6,14 @@ export const FooterTag = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: ${props => props.theme.background4};
+`
+
+export const P = styled.p`
+    color: ${props => props.theme.color1};
+`
+
+export const Anchor = styled.a`
+    font-weight: bold;
+    color: ${props => props.theme.color1};
 `
