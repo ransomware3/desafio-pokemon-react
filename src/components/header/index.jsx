@@ -38,6 +38,7 @@ export const Header = ({ filterPokemons, typeFilter }) => {
                     <Nav>
                         <Ul>
                             <li><SAnchor rel="noopener noreferrer" target='_blank' href='https://pokeapi.co/'>PokeAPI</SAnchor></li>
+                            <li><SAnchor rel="noopener noreferrer" target='_blank' href='https://github.com/ransomware3/desafio-pokemon-react'>CODE</SAnchor></li>
                             <li><ThemeToggler /></li>
                         </Ul>
                     </Nav>
