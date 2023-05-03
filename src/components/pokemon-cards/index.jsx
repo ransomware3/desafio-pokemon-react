@@ -1,7 +1,10 @@
 import { Header } from "../header"
 import { useEffect, useState } from "react"
 import { SkeletonStyled } from "../skeleton"
-import { getPokemons, showMore } from "../../services/poke-api"
+import { getPokemons, showMore } from "../../services/poke-home"
+import { ClipLoader } from "react-spinners"
+import { useContext } from "react"
+import { ThemeeContext } from "../../contexts/theme-context"
 import {
     Ul,
     Li,
@@ -22,6 +25,8 @@ export const CardsPokemon = () => {
     const [ isLoading, setIsLoading ] = useState(true)
     const [ btnLoad, setBtnLoad ] = useState(false)
     const [ offset, setOffset ] = useState(100)
+
+    const { theme } = useContext(ThemeeContext)
 
     useEffect(() => {
         getPokemons(setRenderPokemons, setIsLoading)
@@ -98,7 +103,7 @@ export const CardsPokemon = () => {
                     )}
                 </Ul>
                 {isLoading ? (null) : (
-                    btnLoad ? (<P style={{ marginTop: '40px' }}>Loading...</P>) 
+                    btnLoad ? (<div style={{ marginTop: '40px' }}><ClipLoader color={ theme.color3 }/></div>)
                     : (<BtnCharge id="more" onClick={() => showMore(renderPokemons, setRenderPokemons, offset, setOffset, setBtnLoad)}>SHOW MORE</BtnCharge>)
                 )}
             </Section>

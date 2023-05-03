@@ -1,26 +1,15 @@
 import 'react-loading-skeleton/dist/skeleton.css'
 import {
-    StyledSkeleton
+    StyledSkeleton,
 } from "./styled"
 
 export const SkeletonStyled = () => {
+    const array = Array(15).fill(null)
+    console.log(array)
+
     return (
         <>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
-            <StyledSkeleton/>
+            { array.map((_, index) => <StyledSkeleton key={index} />) }
         </>
     )
 }

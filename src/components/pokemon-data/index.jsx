@@ -1,7 +1,10 @@
 import { useParams } from "react-router-dom"
-import axios from "axios"
 import { useEffect, useState } from "react"
 import { IoIosArrowBack } from 'react-icons/io'
+import { getPokeData, getAbilityDesc } from "../../services/poke-individual"
+import { ClipLoader } from "react-spinners"
+import { useContext } from "react"
+import { ThemeeContext } from "../../contexts/theme-context"
 import {
     Section,
     CardDiv,
@@ -25,43 +28,15 @@ export const PokeData = () => {
     const [abilityUrls, setAbilityUrls] = useState([])
     const [abilityDesc, setAbilityDesc] = useState([])
 
-    useEffect(() => {
-        getPokeData(id)
-        getAbilityDesc()
-        // eslint-disable-next-line
-    }, [isLoading])
-
     const { id } = useParams()
-
+    const { theme } = useContext(ThemeeContext)
     const urlGif = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`
 
-    const getPokeData = (id) => {
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-            .then(res => {
-                const data = res.data
-                const moves = res.data.moves
-                const ability = res.data.abilities
-                const list = ability.map((item) => item.ability)
-                const url = list.map((item) => item.url)
-                setPoke(data)
-                setAbilityUrls(url)
-                setPokeAbilities(ability)
-                setPokeMoves(moves)
-            })
-            .then(() => setIsLoading(false))
-            .catch(error => console.log(error))
-    }
-
-    const getAbilityDesc = () => {
-        const effectsArray = []
-        axios.all(abilityUrls.map((item) => axios.get(item)
-            .then((res) => {
-                const effects = res.data.effect_entries
-                effectsArray.push(effects[1])
-                const finalRes = effectsArray.map((item) => item.effect)
-                setAbilityDesc(finalRes)
-            })))
-    }
+    useEffect(() => {
+        getPokeData(id, setPoke, setAbilityUrls, setPokeAbilities, setPokeMoves, setIsLoading)
+        getAbilityDesc(abilityUrls, setAbilityDesc)
+        // eslint-disable-next-line
+    }, [isLoading])
 
     const getTypes = () => {
         const pokemonTypes = poke.types
@@ -72,7 +47,7 @@ export const PokeData = () => {
     const RenderList = () => (
         <>
             {isLoading ? (
-                <P>Loading...</P>
+                <div style={{ marginTop: '40px' }}><ClipLoader color={ theme.color3 }/></div>
             ) : (
                 <CardDiv>
                     <P>{getTypes()}</P>
