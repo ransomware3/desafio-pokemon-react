@@ -34,12 +34,10 @@ export const ThemeeProvider = ({ children }) => {
     const [theme, setTheme] = useTheme('theme', themes.light)
 
     return (
-        <>
-            <ThemeeContext.Provider value={{ theme, setTheme }}>
-                <ThemeProvider theme={theme}>
-                    {children}
-                </ThemeProvider>
-            </ThemeeContext.Provider>
-        </>
+        <ThemeeContext.Provider value={{ theme, setTheme }}>
+            <ThemeProvider theme={typeof theme === 'object' ? theme : themes.light}>
+                {children}
+            </ThemeProvider>
+        </ThemeeContext.Provider>
     )
 }

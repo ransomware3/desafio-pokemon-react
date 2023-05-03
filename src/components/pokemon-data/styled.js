@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import BackgroundPage from '../../images/fundo-site.png'
+import BackgroundPage from '../../assets/fundo-site.png'
 
 export const Section = styled.section`
     width: 100%;

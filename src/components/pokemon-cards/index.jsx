@@ -1,7 +1,7 @@
 import { Header } from "../header"
-import axios from "axios"
 import { useEffect, useState } from "react"
 import { SkeletonStyled } from "../skeleton"
+import { getPokemons, showMore } from "../../services/poke-api"
 import {
     Ul,
     Li,
@@ -17,64 +17,31 @@ import {
 } from './styled'
 
 export const CardsPokemon = () => {
-    const [renderPokemons, setRenderPokemons] = useState([])
-    const [searchedPokemons, setSearchedPokemons] = useState([])
-    const [number, setNumber] = useState(200)
-    const [isLoading, setIsLoading] = useState(true)
+    const [ renderPokemons, setRenderPokemons ] = useState([])
+    const [ searchedPokemons, setSearchedPokemons ] = useState([])
+    const [ isLoading, setIsLoading ] = useState(true)
+    const [ btnLoad, setBtnLoad ] = useState(false)
+    const [ offset, setOffset ] = useState(100)
 
     useEffect(() => {
-        getPokemons()
+        getPokemons(setRenderPokemons, setIsLoading)
         // eslint-disable-next-line
     }, [])
 
-    const getPokemons = () => {
-        let endpoints = []
-
-        for (let i = 1; i <= number; i++) {
-            endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-        }
-
-        axios.all(endpoints.map((item) => axios.get(item)))
-            .then((res) => {
-                const data = res.map((item) => item.data)
-                setRenderPokemons(data)
-            }).then(() => setIsLoading(false))
-            .catch((error) => console.log('erro getPokemons' + error))
-    }
-
-    const showMore = () => {
-        const morePokemons = number + 50
-        let endpoints = []
-
-        for (let i = number + 1; i <= morePokemons; i++) {
-            endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-        }
-
-        axios.all(endpoints.map((item) => axios.get(item)))
-            .then((res) => {
-                const data = res.map((item) => item.data)
-                setRenderPokemons([...renderPokemons, ...data])
-            })
-            .catch((error) => console.log('erro showMore' + error))
-
-        setNumber(morePokemons)
-    }
-
-    const filterPokemons = (search) => {
+    const filterPokemons = search => {
         if (search === "") {
             setSearchedPokemons([])
         } else {
-            const filteredPokemons = renderPokemons.filter((item) => item.name.includes(search) || item.id.toString().includes(search))
+            const filteredPokemons = renderPokemons.filter(item => item.name.includes(search) || item.id.toString().includes(search))
             setSearchedPokemons(filteredPokemons)
         }
     }
 
-    const typeFilter = (search) => {
+    const typeFilter = search => {
         if (search === "") {
             setSearchedPokemons([])
-            return
         } else {
-            const filteredTypes = renderPokemons.filter((item) => {
+            const filteredTypes = renderPokemons.filter(item => {
                 const pokeTypes = item.types
 
                 return (item.types[1]) ? pokeTypes[0].type.name.includes(search) || pokeTypes[1].type.name.includes(search) : pokeTypes[0].type.name.includes(search)
@@ -83,7 +50,7 @@ export const CardsPokemon = () => {
         }
     }
 
-    const RenderList = (pokeList) => (
+    const RenderList = pokeList => (
         <>
             {
                 pokeList.map((item, index) => {
@@ -123,7 +90,7 @@ export const CardsPokemon = () => {
 
                 <Ul>
                     {isLoading ? (
-                        <SkeletonStyled/>
+                        <SkeletonStyled />
                     ) : (
                         <>
                             {RenderList(renderPokemons)}
@@ -131,9 +98,11 @@ export const CardsPokemon = () => {
                     )}
                 </Ul>
                 {isLoading ? (null) : (
-                    <BtnCharge id="more" onClick={showMore}>SHOW MORE</BtnCharge>
+                    btnLoad ? (<P style={{ marginTop: '40px' }}>Loading...</P>) 
+                    : (<BtnCharge id="more" onClick={() => showMore(renderPokemons, setRenderPokemons, offset, setOffset, setBtnLoad)}>SHOW MORE</BtnCharge>)
                 )}
             </Section>
         </Main>
     )
+
 }

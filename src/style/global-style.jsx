@@ -10,6 +10,10 @@ export const GlobalStyle = createGlobalStyle`
         letter-spacing: 3px;
     }
 
+    html{
+        scroll-behavior: smooth;
+    }
+
     body{
         background-color: #222;
     }

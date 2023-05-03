@@ -1,4 +1,4 @@
-import { PokeData } from "../components/pokemon-data"
+import { PokeData } from "../../components/pokemon-data"
 
 export const PagePokeDetails = () => (
     <PokeData/>

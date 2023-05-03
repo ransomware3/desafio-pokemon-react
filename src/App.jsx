@@ -1,16 +1,16 @@
-import { AppRoutes } from "./pages/routes"
+import { AppRoutes } from "./routes"
 import { GlobalStyle } from "./style/global-style"
-import { ThemeeProvider } from './contexts/theme-context'
+import { SkeletonTheme } from "react-loading-skeleton"
+import { useContext } from "react"
+import { ThemeeContext } from "./contexts/theme-context"
 
-function App() {
+export function App() {
+	const { theme } = useContext(ThemeeContext)
+
 	return (
-		<>
-			<ThemeeProvider>
-				<GlobalStyle/>
-				<AppRoutes/>
-			</ThemeeProvider>
-		</>
+		<SkeletonTheme baseColor={theme.skeletonColor} highlightColor={theme.skeletonHigh}>
+			<GlobalStyle />
+			<AppRoutes />
+		</SkeletonTheme>
 	)
 }
-
-export { App }
