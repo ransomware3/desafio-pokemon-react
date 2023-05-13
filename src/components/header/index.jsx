@@ -1,25 +1,25 @@
 import Logo from '../../assets/pokemon-logo.png'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 import { BiSearch } from 'react-icons/bi'
-import { ThemeToggler } from '../theme-toggler'
+import ThemeToggler from '../theme-toggler'
 import {
     HeaderTag,
     HeaderOne,
     ImgLogo,
     Nav,
     Ul,
+    Input,
     LogoContainer,
     HeaderLimiter,
     SubHeader,
     Select,
-    Input,
     ContainerSearch,
     BtnSearch,
     SAnchor,
     Option
 } from './styled'
 
-export const Header = ({ filterPokemons, typeFilter }) => {
+const Header = ({ filterPokemons, typeFilter }) => {
 
     const [selectedValue, setSelectedValue] = useState('')
 
@@ -71,9 +71,11 @@ export const Header = ({ filterPokemons, typeFilter }) => {
                 </Select>
                 <ContainerSearch>
                     <Input onChange={({ target }) => filterPokemons(target.value.toLowerCase())} placeholder='Search...' type='text'></Input>
-                    <BtnSearch><BiSearch /></BtnSearch>
+                    <BtnSearch><BiSearch/></BtnSearch>
                 </ContainerSearch>
             </SubHeader>
         </HeaderTag>
     )
 }
+
+export default memo(Header)

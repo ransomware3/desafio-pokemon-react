@@ -1,4 +1,4 @@
-import { Header } from "../header"
+import Header from "../header"
 import { useEffect, useState } from "react"
 import { SkeletonStyled } from "../skeleton"
 import { getPokemons, showMore } from "../../services/poke-home"
@@ -15,21 +15,21 @@ import {
     BtnCharge,
     ContainerTitle,
     P,
-    UlSearch,
     Main
 } from './styled'
 
 export const CardsPokemon = () => {
-    const [ renderPokemons, setRenderPokemons ] = useState([])
-    const [ searchedPokemons, setSearchedPokemons ] = useState([])
-    const [ isLoading, setIsLoading ] = useState(true)
-    const [ btnLoad, setBtnLoad ] = useState(false)
-    const [ offset, setOffset ] = useState(100)
+    const [renderPokemons, setRenderPokemons] = useState([])
+    const [allPokemons, setAllPokemons] = useState([])
+    const [searchedPokemons, setSearchedPokemons] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+    const [btnLoad, setBtnLoad] = useState(false)
+    const [offset, setOffset] = useState(20)
 
     const { theme } = useContext(ThemeeContext)
 
     useEffect(() => {
-        getPokemons(setRenderPokemons, setIsLoading)
+        getPokemons(setAllPokemons, setIsLoading, setRenderPokemons)
         // eslint-disable-next-line
     }, [])
 
@@ -37,7 +37,7 @@ export const CardsPokemon = () => {
         if (search === "") {
             setSearchedPokemons([])
         } else {
-            const filteredPokemons = renderPokemons.filter(item => item.name.includes(search) || item.id.toString().includes(search))
+            const filteredPokemons = allPokemons.filter(item => item.name.includes(search) || item.id.toString().includes(search))
             setSearchedPokemons(filteredPokemons)
         }
     }
@@ -87,24 +87,25 @@ export const CardsPokemon = () => {
         <Main>
             <Header typeFilter={typeFilter} filterPokemons={filterPokemons} />
             <Section>
-                {searchedPokemons.length > 0 && (
-                    <UlSearch>
+                {searchedPokemons.length > 0 ? (
+                    <Ul>
                         {RenderList(searchedPokemons)}
-                    </UlSearch>
+                    </Ul>
+                ) : (
+                    <Ul>
+                        {isLoading ? (
+                            <SkeletonStyled />
+                        ) : (
+                            <>
+                                {RenderList(renderPokemons)}
+                            </>
+                        )}
+                    </Ul>
                 )}
 
-                <Ul>
-                    {isLoading ? (
-                        <SkeletonStyled />
-                    ) : (
-                        <>
-                            {RenderList(renderPokemons)}
-                        </>
-                    )}
-                </Ul>
                 {isLoading ? (null) : (
-                    btnLoad ? (<div style={{ marginTop: '40px' }}><ClipLoader color={ theme.color3 }/></div>)
-                    : (<BtnCharge id="more" onClick={() => showMore(renderPokemons, setRenderPokemons, offset, setOffset, setBtnLoad)}>SHOW MORE</BtnCharge>)
+                    btnLoad ? (<div style={{ marginTop: '40px' }}><ClipLoader color={theme.color3} /></div>)
+                        : (<BtnCharge id="more" onClick={() => showMore(renderPokemons, setRenderPokemons, offset, setOffset, setBtnLoad, allPokemons)}>SHOW MORE</BtnCharge>)
                 )}
             </Section>
         </Main>

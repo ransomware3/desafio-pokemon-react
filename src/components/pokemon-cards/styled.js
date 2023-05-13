@@ -24,17 +24,14 @@ export const Ul = styled.ul`
     gap: 40px;
 `
 
-export const UlSearch = styled.ul`
-    width: 85%;
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    gap: 40px;
-    margin-bottom: 60px;
-    border-bottom: 1px solid;
-    padding-bottom: 60px;
-    border-color: ${props => props.theme.color3};
-`
+// export const UlSearch = styled.ul`
+//     width: 85%;
+//     display: flex;
+//     justify-content: center;
+//     flex-flow: row wrap;
+//     gap: 40px;
+//     padding-bottom: 60px;
+// `
 
 export const Li = styled.li`
     width: 250px;

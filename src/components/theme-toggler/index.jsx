@@ -1,8 +1,8 @@
-import { useContext } from "react"
+import { useContext, memo } from "react"
 import { ThemeeContext, themes } from "../../contexts/theme-context"
 import ReactSwitch from "react-switch"
 
-export const ThemeToggler = () => {
+const ThemeToggler = () => {
     const { theme, setTheme } = useContext(ThemeeContext)
 
     const handleTheme = () => {
@@ -23,3 +23,5 @@ export const ThemeToggler = () => {
         />
     )
 }
+
+export default memo(ThemeToggler)

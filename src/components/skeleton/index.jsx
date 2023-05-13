@@ -5,7 +5,6 @@ import {
 
 export const SkeletonStyled = () => {
     const array = Array(15).fill(null)
-    console.log(array)
 
     return (
         <>
