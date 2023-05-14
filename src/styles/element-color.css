@@ -1,0 +1,67 @@
+.color-normal {
+    background-image: url(../assets/normal.jpg);
+}
+
+.color-fire {
+    background-image: url(../assets/fire.jpg);
+}
+
+.color-water {
+    background-image: url(../assets/water.jpg);
+}
+
+.color-electric {
+    background-image: url(../assets/electric.jpg);
+}
+
+.color-grass {
+    background-image: url(../assets/grass.jpg);
+}
+
+.color-ice {
+    background-image: url(../assets/ice.jpg);
+}
+
+.color-fighting {
+    background-image: url(../assets/fighting.jpg);
+}
+
+.color-poison {
+    background-image: url(../assets/poison.jpg);
+}
+
+.color-ground {
+    background-image: url(../assets/ground.jpg);
+}
+
+.color-psychic {
+    background-image: url(../assets/psychic.jpg);
+}
+
+.color-bug {
+    background-image: url(../assets/bug.jpg);
+}
+
+.color-rock {
+    background-image: url(../assets/rock.jpg);
+}
+
+.color-ghost {
+    background-image: url(../assets/ghost.jpg);
+}
+
+.color-dragon {
+    background-image: url(../assets/dragon.jpg);
+}
+
+.color-dark {
+    background-image: url(../assets/dark.jpg);
+}
+
+.color-steel {
+    background-image: url(../assets/steel.jpg);
+}
+
+.color-fairy {
+    background-image: url(../assets/fairy.jpg);
+}

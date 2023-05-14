@@ -11,7 +11,7 @@ export const getPokemons = (setAllPokemons, setIsLoading, setRenderPokemons) => 
         Promise.all(endpoints.map(item => axios.get(item)))
         .then(res => {
             const dataAll = res.map(item => item.data)
-            const dataRender = dataAll.slice(0, 20)
+            const dataRender = dataAll.slice(0, 25)
             setRenderPokemons(dataRender)
             setAllPokemons(dataAll)
         })
@@ -23,8 +23,8 @@ export const getPokemons = (setAllPokemons, setIsLoading, setRenderPokemons) => 
 export const showMore = (renderPoke, setPoke, value, setValue, setLoad, allPokemons) => {
     setLoad(true)
 
-    const test = allPokemons.slice(value, value + 20)
-    setPoke([...renderPoke, ...test])
-    setValue(value + 20)
+    const newPokes = allPokemons.slice(value, value + 25)
+    setPoke([...renderPoke, ...newPokes])
+    setValue(value + 25)
     setLoad(false)
 }

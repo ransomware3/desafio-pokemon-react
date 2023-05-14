@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import BackgroundPage from '../../assets/fundo-site.png'
 
 export const Main = styled.main`
     width: 100%;
@@ -18,27 +17,19 @@ export const Section = styled.section`
 
 export const Ul = styled.ul`
     width: 85%;
+    min-height: 50vh;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-flow: row wrap;
     gap: 40px;
 `
-
-// export const UlSearch = styled.ul`
-//     width: 85%;
-//     display: flex;
-//     justify-content: center;
-//     flex-flow: row wrap;
-//     gap: 40px;
-//     padding-bottom: 60px;
-// `
 
 export const Li = styled.li`
     width: 250px;
     height: 300px;
     background-position: center;
     border-radius: 10px;
-    background-image: url(${BackgroundPage});
     background-position: center;
     background-size: cover;
     transition: .2s;
@@ -55,22 +46,28 @@ export const ContainerTitle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding: 0 15px;
 `
     
 export const H2 = styled.h2`    
     text-transform: uppercase;
     font-size: 20px;
     color: #fff;
+    text-shadow: 2px 2px 2px #000;
 `
 
 export const P = styled.p`
     font-weight: bold;
     color: #fff;
+    text-shadow: 2px 2px 2px #000;
 `
 
 export const Img = styled.img`
     width: 50%;
     margin: 30px 0;
+    -webkit-filter: drop-shadow(3px 3px 3px #222);
+    filter: drop-shadow(3px 3px 3px #222);
 `
 
 export const StyledLink = styled(Link)`

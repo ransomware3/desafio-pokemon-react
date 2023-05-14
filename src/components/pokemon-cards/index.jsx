@@ -5,6 +5,7 @@ import { getPokemons, showMore } from "../../services/poke-home"
 import { ClipLoader } from "react-spinners"
 import { useContext } from "react"
 import { ThemeeContext } from "../../contexts/theme-context"
+import "../../styles/element-color.css"
 import {
     Ul,
     Li,
@@ -24,13 +25,12 @@ export const CardsPokemon = () => {
     const [searchedPokemons, setSearchedPokemons] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [btnLoad, setBtnLoad] = useState(false)
-    const [offset, setOffset] = useState(20)
+    const [offset, setOffset] = useState(25)
 
     const { theme } = useContext(ThemeeContext)
 
     useEffect(() => {
         getPokemons(setAllPokemons, setIsLoading, setRenderPokemons)
-        // eslint-disable-next-line
     }, [])
 
     const filterPokemons = search => {
@@ -58,8 +58,9 @@ export const CardsPokemon = () => {
     const RenderList = pokeList => (
         <>
             {
-                pokeList.map((item, index) => {
+                pokeList.map(item => {
                     const pokemonTypes = item.types
+                    console.log()
                     const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`
 
                     const getTypes = () => {
@@ -67,10 +68,10 @@ export const CardsPokemon = () => {
                     }
 
                     return (
-                        <Li key={index}>
+                        <Li className={`color-${pokemonTypes[0].type.name}`} key={item.id}>
                             <StyledLink to={`/pokemon/${item.id}`}>
                                 <P>{getTypes()}</P>
-                                <Img alt="imagem do pokemon" src={imgUrl}></Img>
+                                <Img alt="Pokemon Sprite" src={imgUrl}></Img>
                                 <ContainerTitle>
                                     <H2>{'#' + item.id + ''}</H2>
                                     <H2>&nbsp;{item.name}</H2>
