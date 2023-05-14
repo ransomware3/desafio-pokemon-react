@@ -5,7 +5,7 @@ import { getPokemons, showMore } from "../../services/poke-home"
 import { ClipLoader } from "react-spinners"
 import { useContext } from "react"
 import { ThemeeContext } from "../../contexts/theme-context"
-import "../../styles/element-color.css"
+import "../../styles/elements.css"
 import {
     Ul,
     Li,
