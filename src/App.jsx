@@ -1,5 +1,5 @@
 import { AppRoutes } from "./routes"
-import { GlobalStyle } from "./style/global-style"
+import { GlobalStyle } from "./styles/global-style"
 import { SkeletonTheme } from "react-loading-skeleton"
 import { useContext } from "react"
 import { ThemeeContext } from "./contexts/theme-context"
